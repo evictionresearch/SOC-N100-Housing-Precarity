@@ -101,6 +101,13 @@ The software that we'll be using for our data analysis is the free and open-sour
 This course will be held on Zoom with recordings posted after each class. 
 
 ### Course Requirements and Assignments
+
+Your grade has three components, which have the following weights: 
+
+1. Class participation 20%
+2. Assignments (#1 = 20%, #2 = 20%) 40%
+3. Final group project 40%
+
 #### Class participation (20%)
 
 Participation in class is an important part of your learning experience and a vital skill in the working world. Participation in class also gives me richer information about your grasp of the class material and helps me make adjustments where necessary. Attendance makes up 10% for class participation and the remaining 10% is based on your participation - in-class quizzes, contributing to class discussions, asking questions, offering up potential solutions to problems, presenting a solution to an assignment, volunteering to present, and overall engagement and enrichment of the class.
