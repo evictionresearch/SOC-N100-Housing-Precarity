@@ -4,6 +4,7 @@ project:
 
 website:
   title: "SOC-N100"
+  repo-url: "https://github.com/evictionresearch/SOC-N100-Housing-Precarity"
   navbar:
     left:
       - href: index.qmd
@@ -12,16 +13,19 @@ website:
         href: syllabus.qmd
       - text: Resources
         href: resources.qmd
+      - text: RStudio
+        href: https://stat20.datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fevictionresearch%2FSOC-N100-Housing-Precarity&urlpath=rstudio%2F
     tools:
       - icon: r-circle-fill
         href: https://stat20.datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fevictionresearch%2FSOC-N100-Housing-Precarity&urlpath=rstudio%2F
         aria-label: RStudio
+      - icon: github
+        href: https://github.com/evictionresearch/SOC-N100-Housing-Precarity
 
 format:
   html:
     theme:
-      light: [cosmo, light.scss]
-      dark: [cosmo, dark.scss]
+      cosmo
     css: styles.css
     toc: true
 

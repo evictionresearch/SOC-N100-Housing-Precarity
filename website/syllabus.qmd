@@ -93,6 +93,117 @@ The primary materials for the course are available on this website. I'll teach y
 
 The software that we'll be using for our data analysis is the free and open-source language called R that we'll be interacting with via software called RStudio. As a Berkeley student, you have your own version of RStudio waiting you on a special [data hub](https://stat20.datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fevictionresearch%2FSOC-N100-Housing-Precarity&urlpath=rstudio%2F). This data hub syncs the class materials, giving you access to most of what you need. Most students taking this course have no experience programming; I'll teach you everything you need to know!
 
+### Workload
+*   4 hours of class time (2 hours of lecture, 2 hours of lab)
+*   expect 12 hours of work outside of class after week 1
+
+### Instruction Mode
+This course will be held on Zoom with recordings posted after each class. 
+
+### Course Requirements and Assignments
+#### Class participation (20%)
+
+Participation in class is an important part of your learning experience and a vital skill in the working world. Participation in class also gives me richer information about your grasp of the class material and helps me make adjustments where necessary. Attendance makes up 10% for class participation and the remaining 10% is based on your participation - in-class quizzes, contributing to class discussions, asking questions, offering up potential solutions to problems, presenting a solution to an assignment, volunteering to present, and overall engagement and enrichment of the class.
+
+A good contribution to class discussion is a comment that possesses one or more of the following properties. (1) It offers a different and unique, but relevant, insight to the issue; moves the discussion and analysis forward to generate new insights. (2) It builds on the preceding discussion; relates to a personal anecdote or experience in a way that helps to illuminate the ideas being discussed. (3) It uses logic, evidence, and creative thinking (argument), so that it is more than merely an expression of an opinion or feeling (assertion).
+
+#### Assignments (40%). 
+
+For each assignment you will submit:
+
+* R code script that is replicable by the grader, 
+* a brief write up explaining your assignment with plots and context, and 
+  * Include one or more introductory paragraphs summarizing what you are analyzing and your overall findings. 
+  * Text and plots walking the reader through a more detailed understanding of what you found. Make sure to describe your plots. 
+  * Summary conclusion and analytic insights (i.e., what the data is telling you).
+* URL links to any and all AI usage. 
+  * In you code, put the URL in comments next to the relevant area. 
+  * In your write up, put the URL in footnotes near the section or text in which you used AI. 
+  * [*See AI policy below for more info.*](#ai-policy)
+
+These assignments will be graded on using the scale below. Anything above a D will pass. No late assignments will be accepted. You can volunteer to present a 5-minute demo of your assignment in class.
+
+#### Final group project (40%). 
+
+For your final group project you and 2-3 of your peers will choose a city or county and come up with a research question you can answer with one of the datasets from the class that tests at least two hypotheses about the disparate impact or unique problem of displacement in that area. You will need to do some research about your chosen area and may even need to do some exploratory analysis of the area to see what might be a suitable research question and driver of displacement. For example, in Marin County, CA high rents are displacing the county’s workforce-age adults and young families, resulting in school closures and deterring needed residents to keep the county sustainable. Another example is Salt Lake City’s most affordable neighborhoods are also experiencing high rates of displacement, meaning there is no where for displaced residents to move to that is affordable. Find something that would be compelling for the city or county to know about the problem of displacement in their area. 
+
+* You will submit a final report, R code, and a short slide presentation (no longer than 10 slides) showcasing your question, your methods and key results. 
+* On the last day you will present your project to the class. 
+
+### Course Grading 
+
+A+ 97+ | A 93-96 | A- 90-92
+
+B+ 87-89 | B 83-86 | B- 80-82
+
+C+ 77-79 | C 73-76 | C- 70-72
+
+D+ 67-69 | D 63-66 | D- 60-62
+
+F 0-59
+
+### Late work policy
+
+No late work will be accepted.
+
+### AI Policy
+
+AI is allowed and encouraged in this course as it is crucial to learn how to use these tools effectively for your future work. However, it is vital to recognize both the strengths and limitations of AI to avoid jeopardizing your projects and future career. Here are some key considerations:
+
+*Understanding AI's Role*
+
+1. *Information Synthesis*: AI excels at synthesizing information but does not create new knowledge. It serves as a broad assistant for research, writing improvement, and coding tasks.
+2. *Limitations of Training Data*: AI models are constrained by their training data and cannot generate truly novel ideas or content beyond this scope.
+3. *Potential for Errors*: AI hallucinations and misinterpretations are real concerns. Always critically evaluate and verify AI-generated content.
+
+*Effective AI Usage*
+
+1. *Prompt Engineering*: The quality of AI output heavily depends on the quality of input. Craft clear, specific prompts to get the best results.
+2. *Human Expertise*: You are the domain expert. Ensure that AI is working for you and aligning with your goals and expectations.
+3. *Fact-Checking*: Always verify AI-generated information, especially for recent events or specialized topics.
+
+*Ethical Considerations*
+
+1. *Attribution*: When using AI-generated content, properly attribute it in your work.
+2. *Academic Integrity*: Use AI as a tool for learning and productivity, not as a substitute for your own critical thinking and analysis.
+3. *Bias Awareness*: Be mindful of potential biases in AI-generated content and strive for diverse perspectives.
+
+*Be vigilant about model changes moving forward:* As AI advances, be aware of both improvements to models as well as possible problems (i.e., increasing censorship, how it was trained, developer intent, etc.). 
+
+In this class you will use [perplexity.ai](https://perplexity.ai) because it allows you to test and use multiple language models (e.g., OpenAI, Claude, Lamma, and a few more) and searches the web to find the most recent information about a topic. Access to the web supplements its knowledge and usefulness. Sign up for a free account at <https://www.perplexity.ai/backtoschool>
+
+Do not use any other AI platform without permission. You will be required to provide URLs to your use of Perplexity so we can understand your use of it and help develop your skills. 
+
+*Responsible AI Use*
+
+1. *Transparency*: Be open about your use of AI tools in your work.
+2. *Iterative Approach*: Use AI as part of an iterative process. Start with creating some content and then ask AI to refine and improve results with your own expertise.
+3. *Skill Development*: Focus on developing skills in prompt engineering, critical evaluation, and effective integration of AI-generated content.
+
+*Reporting Issues*
+
+If you encounter any problems or have concerns about AI use in the course, please report them to the instructor promptly.
+
+By following these guidelines, you'll be better equipped to harness the power of AI while maintaining the integrity and quality of your academic work in computational social science.
+
+### Code of Conduct
+
+Students and the instructor will abide by the [UC Berkeley Code of Conduct](https://ethics.berkeley.edu/code-conduct).
+
+### Primary Datasets & Tools
+
+The American Community Survey (ACS) is an ongoing survey conducted by the U.S. Census Bureau that provides vital information about the United States and its people. Released annually, the ACS covers a broad range of topics including social, economic, housing, and demographic characteristics of the U.S. population. Some of the primary variables used to measure displacement that are derived from the ACS include housing characteristics, rent, racial and ethnic compositions, incomes, and migration. 
+
+tidycensus is an R package that provides a user-friendly interface to access ACS data directly within the R environment. It allows users to retrieve ACS data in a tidy format, ready for analysis with tidyverse tools. With tidycensus, you can easily download ACS data for various geographic levels (e.g., states, counties, census tracts) and years, and include spatial data for mapping purposes.
+
+### Disabled Student Program (DSP)
+
+UC Berkeley is committed to creating a learning environment that meets the needs of its diverse student body including students with disabilities. If you anticipate or experience any barriers to learning in this course, please feel welcome to discuss your concerns with me.
+
+If you have a disability, or think you may have a disability, you can work with the Disabled Students' Program (DSP) to request an official accommodation. The Disabled Students' Program (DSP) is the campus office responsible for authorizing disability-related academic accommodations, in cooperation with the students themselves and their instructors. You can find more information about DSP, including contact information and the application process here: dsp.berkeley.edu. If you have already been approved for accommodations through DSP, please meet with me so we can develop an implementation plan together."
+
+Students who need academic accommodations or have questions about their accommodations should contact DSP, located at 260 César Chávez Student Center. Students may call 642-0518 (voice), 642-6376 (TTY), or e-mail dsp@berkeley.edu(link sends e-mail).
+
 <!-- ### Course communication -->
 
 <!-- #### bCourses -->
