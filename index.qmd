@@ -1,0 +1,11 @@
+---
+title: "Housing Precarity and Displacement: Racial and Gender Inequality in Gentrification and Eviction"
+---
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+```{r}
+1 + 1
+```
