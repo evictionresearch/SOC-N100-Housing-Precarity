@@ -1,5 +1,6 @@
 ---
-title: "SOC-N100"
+title: "Housing Precarity and Displacement:<br>Racial and Gender Inequality in Gentrification and Eviction"
+toc: true
 ---
 
 This is a Quarto website.

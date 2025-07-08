@@ -8,7 +8,13 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - text: Syllabus
+        href: syllabus.qmd
+    tools:
+      - icon: r-circle-fill
+        href: https://stat20.datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fevictionresearch%2FSOC-N100-Housing-Precarity&urlpath=rstudio%2F
+        aria-label: RStudio
+
 
 format:
   html:
