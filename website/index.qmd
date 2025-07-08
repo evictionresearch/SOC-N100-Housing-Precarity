@@ -1,12 +1,15 @@
 ---
-title: "Housing Precarity and Displacement:<br>Racial and Gender Inequality in Gentrification and Eviction"
+title: "Housing Precarity and Displacement"
+subtitle: "Racial and Gender Inequality in Gentrification and Eviction"
 toc: true
+author-title: Instructor
+author: 
+  - Tim Thomas
+  - timthomas@berkeley.edu
 ---
+Tuesdays & Thursdays | 10am to 12pm | July 8 to July 14   
+Zoom link: [https://berkeley.zoom.us/my/timthomaszoom](https://berkeley.zoom.us/my/timthomaszoom)
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+### Tuesday July 8
+* [Slides](https://docs.google.com/presentation/d/1nHe2SQmLnlvXZnCW8O6uzEcM15XqA3w2flZ4ntPqbM0/edit?slide=id.g32100058b3b_0_283#slide=id.g32100058b3b_0_283)
+* [Syllabus](syllabus.qmd)

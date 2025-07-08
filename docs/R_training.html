@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Tim Thomas">
-<meta name="author" content="timthomas@berkeley.edu">
 
-<title>Housing Precarity and Displacement – SOC-N100</title>
+<title>r_training – SOC-N100</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,12 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-50d0a9a6ccb1d7d679facc25e4fd66b2.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -93,22 +89,17 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./resources.html"> 
-<span class="menu-text">Resources</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <a href="https://stat20.datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fevictionresearch%2FSOC-N100-Housing-Precarity&amp;urlpath=rstudio%2F" title="" class="quarto-navigation-tool px-1" aria-label="RStudio"><i class="bi bi-r-circle-fill"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -122,53 +113,204 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tuesday-july-8" id="toc-tuesday-july-8" class="nav-link active" data-scroll-target="#tuesday-july-8">Tuesday July 8</a></li>
+  <li><a href="#learn-r" id="toc-learn-r" class="nav-link active" data-scroll-target="#learn-r">Learn R</a>
+  <ul class="collapse">
+  <li><a href="#harvard-universitys-data-science-r-basics-edxcoursera" id="toc-harvard-universitys-data-science-r-basics-edxcoursera" class="nav-link" data-scroll-target="#harvard-universitys-data-science-r-basics-edxcoursera">1. <strong>Harvard University’s “Data Science: R Basics” (edX/Coursera)</strong></a></li>
+  <li><a href="#swirl-learn-r-in-the-r-console" id="toc-swirl-learn-r-in-the-r-console" class="nav-link" data-scroll-target="#swirl-learn-r-in-the-r-console">2. <strong>Swirl: Learn R in the R Console</strong></a></li>
+  <li><a href="#r-for-data-science-online-book-by-hadley-wickham" id="toc-r-for-data-science-online-book-by-hadley-wickham" class="nav-link" data-scroll-target="#r-for-data-science-online-book-by-hadley-wickham">3. <strong>R for Data Science (Online Book by Hadley Wickham)</strong></a></li>
+  <li><a href="#posit-cloud-formerly-rstudio-cloud-primers" id="toc-posit-cloud-formerly-rstudio-cloud-primers" class="nav-link" data-scroll-target="#posit-cloud-formerly-rstudio-cloud-primers">4. <strong>Posit Cloud (formerly RStudio Cloud) Primers</strong></a></li>
+  <li><a href="#youtube-full-course-tutorials" id="toc-youtube-full-course-tutorials" class="nav-link" data-scroll-target="#youtube-full-course-tutorials">5. <strong>YouTube Full-Course Tutorials</strong></a></li>
+  <li><a href="#other-notable-free-resources" id="toc-other-notable-free-resources" class="nav-link" data-scroll-target="#other-notable-free-resources">6. <strong>Other Notable Free Resources</strong></a></li>
+  <li><a href="#comparison-table" id="toc-comparison-table" class="nav-link" data-scroll-target="#comparison-table">Comparison Table</a></li>
+  <li><a href="#recommendations" id="toc-recommendations" class="nav-link" data-scroll-target="#recommendations">Recommendations</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Housing Precarity and Displacement</h1>
-<p class="subtitle lead">Racial and Gender Inequality in Gentrification and Eviction</p>
+
+
+
+<section id="learn-r" class="level1">
+<h1>Learn R</h1>
+<p>In this course, we will use Software Carprentry to learn some of the basics of R. ## Best Free Base R Training Modules (Alternatives to Software Carpentry)</p>
+<p>If you’re looking for a high-quality, free online module to learn base R programming, here are the top, well-reviewed alternatives:</p>
+<section id="harvard-universitys-data-science-r-basics-edxcoursera" class="level3">
+<h3 class="anchored" data-anchor-id="harvard-universitys-data-science-r-basics-edxcoursera">1. <strong>Harvard University’s “Data Science: R Basics” (edX/Coursera)</strong></h3>
+<ul>
+<li><strong>Overview:</strong> A widely recommended, beginner-friendly course that covers the fundamentals of R programming, data analysis, and visualization.</li>
+<li><strong>Key Features:</strong>
+<ul>
+<li>No prior programming experience required.</li>
+</ul></li>
+<li>Bite-sized video lectures and hands-on coding exercises.</li>
+<li>Real-world datasets for practice.</li>
+<li>Active discussion forums.</li>
+<li>Free to audit (pay only if you want a certificate).</li>
+<li><strong>Topics Covered:</strong> R installation, basic syntax, data types, vectors, functions, data import/export, base plotting, and simple statistics.</li>
+<li><strong>Where to find:</strong> edX, Coursera, or Harvard’s own platform<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
+</ul>
+</section>
+<section id="swirl-learn-r-in-the-r-console" class="level3">
+<h3 class="anchored" data-anchor-id="swirl-learn-r-in-the-r-console">2. <strong>Swirl: Learn R in the R Console</strong></h3>
+<ul>
+<li><strong>Overview:</strong> Swirl is an R package that turns your R console into an interactive learning environment.</li>
+<li><strong>Key Features:</strong>
+<ul>
+<li>100% free and self-paced.</li>
+</ul></li>
+<li>Teaches R basics through hands-on coding directly in R.</li>
+<li>Modules cover R programming, data cleaning, exploratory data analysis, and more.</li>
+<li><strong>How to use:</strong> Install the <code>swirl</code> package in R, then select from official or community modules.</li>
+<li><strong>Where to find:</strong> <a href="https://swirlstats.com/">swirlstats.com</a> or install via R<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</li>
+</ul>
+</section>
+<section id="r-for-data-science-online-book-by-hadley-wickham" class="level3">
+<h3 class="anchored" data-anchor-id="r-for-data-science-online-book-by-hadley-wickham">3. <strong>R for Data Science (Online Book by Hadley Wickham)</strong></h3>
+<ul>
+<li><strong>Overview:</strong> This free online book is a comprehensive, beginner-friendly introduction to R and RStudio, focusing on practical data analysis.</li>
+<li><strong>Key Features:</strong>
+<ul>
+<li>Step-by-step tutorials with code examples.</li>
+</ul></li>
+<li>Companion website with exercises and solutions.</li>
+<li>Covers R basics, data import, manipulation, visualization, and reporting.</li>
+<li><strong>Where to find:</strong> [r4ds.hadley.nz]<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</li>
+</ul>
+</section>
+<section id="posit-cloud-formerly-rstudio-cloud-primers" class="level3">
+<h3 class="anchored" data-anchor-id="posit-cloud-formerly-rstudio-cloud-primers">4. <strong>Posit Cloud (formerly RStudio Cloud) Primers</strong></h3>
+<ul>
+<li><strong>Overview:</strong> Interactive, browser-based tutorials for R beginners—no installation needed.</li>
+<li><strong>Key Features:</strong>
+<ul>
+<li>Free for personal use.</li>
+</ul></li>
+<li>Covers R basics, data frames, plotting, and more.</li>
+<li>Hands-on exercises within a cloud RStudio environment.</li>
+<li><strong>Where to find:</strong> [education.rstudio.com]<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</li>
+</ul>
+</section>
+<section id="youtube-full-course-tutorials" class="level3">
+<h3 class="anchored" data-anchor-id="youtube-full-course-tutorials">5. <strong>YouTube Full-Course Tutorials</strong></h3>
+<ul>
+<li><strong>Simplilearn’s R Programming Full Course:</strong> A 7-hour comprehensive beginner video covering R installation, variables, data types, lists, flow control, functions, data manipulation, and visualization. Free and accessible to all<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</li>
+</ul>
+</section>
+<section id="other-notable-free-resources" class="level3">
+<h3 class="anchored" data-anchor-id="other-notable-free-resources">6. <strong>Other Notable Free Resources</strong></h3>
+<ul>
+<li><strong>Coursera: R Programming by Johns Hopkins University</strong> (free to audit; covers R basics, data structures, and programming concepts)<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</li>
+<li><strong>Udemy Free R Courses:</strong> Several beginner modules, including R basics and data analysis<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>.</li>
+<li><strong>GitHub Repositories:</strong> User-curated lists of free R courses and workshops<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</li>
+</ul>
+</section>
+<section id="comparison-table" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-table">Comparison Table</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Resource</th>
+<th style="text-align: left;">Format</th>
+<th style="text-align: left;">Hands-on Coding</th>
+<th style="text-align: left;">Free Certificate</th>
+<th style="text-align: left;">Focus on Base R</th>
+<th style="text-align: left;">Link to RStudio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Harvard “R Basics” (edX/Coursera)</td>
+<td style="text-align: left;">Video + Quizzes</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Swirl</td>
+<td style="text-align: left;">Interactive R</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R for Data Science (Wickham)</td>
+<td style="text-align: left;">Online Book</td>
+<td style="text-align: left;">Yes (exercises)</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Posit Cloud Primers</td>
+<td style="text-align: left;">Interactive Web</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Simplilearn YouTube Course</td>
+<td style="text-align: left;">Video</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="recommendations">Recommendations</h2>
+<ul>
+<li><strong>Best for absolute beginners:</strong> Harvard “Data Science: R Basics” or Swirl.</li>
+<li><strong>Best for hands-on learners:</strong> Swirl or Posit Cloud Primers.</li>
+<li><strong>Best for reading learners:</strong> R for Data Science by Hadley Wickham.</li>
+<li><strong>Best for video learners:</strong> Simplilearn’s YouTube course.</li>
+</ul>
+<p>All options above are genuinely free and cover base R programming essentials, allowing you to choose the format and style that best fits your learning preferences<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a><a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a><a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a><a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>.</p>
+<div style="text-align: center">
+⁂
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Instructor</div>
-    <div class="quarto-title-meta-contents">
-             <p>Tim Thomas </p>
-             <p>timthomas@berkeley.edu </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Tuesdays &amp; Thursdays | 10am to 12pm | July 8 to July 14<br>
-Zoom link: <a href="https://berkeley.zoom.us/my/timthomaszoom">https://berkeley.zoom.us/my/timthomaszoom</a></p>
-<section id="tuesday-july-8" class="level3">
-<h3 class="anchored" data-anchor-id="tuesday-july-8">Tuesday July 8</h3>
-<ul>
-<li><a href="https://docs.google.com/presentation/d/1nHe2SQmLnlvXZnCW8O6uzEcM15XqA3w2flZ4ntPqbM0/edit?slide=id.g32100058b3b_0_283#slide=id.g32100058b3b_0_283">Slides</a></li>
-<li><a href="./syllabus.html">Syllabus</a></li>
-</ul>
-
-
+</section>
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>https://www.classcentral.com/report/best-r-programming-courses/<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://pll.harvard.edu/subject/r<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>https://www.classcentral.com/report/best-r-programming-courses/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>https://www.classcentral.com/report/best-r-programming-courses/<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>https://www.reddit.com/r/bioinformatics/comments/175foe7/any_completely_free_r_for_beginners_courses/<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>https://dev.to/evergrowingdev/8-top-resources-to-learn-r-programming-for-free-2599<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>https://education.rstudio.com/learn/beginner/<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>https://www.youtube.com/watch?v=Q5g6lYUn6Q4<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>https://www.coursera.org/learn/r-programming<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>https://www.udemy.com/topic/r-programming-language/free/<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>https://github.com/nuitrcs/r-online-2020<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>https://github.com/rstudio-education/rstats-ed<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>https://www.classcentral.com/report/best-r-programming-courses/<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>https://dev.to/evergrowingdev/8-top-resources-to-learn-r-programming-for-free-2599<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>https://www.youtube.com/watch?v=Q5g6lYUn6Q4<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>https://www.reddit.com/r/bioinformatics/comments/175foe7/any_completely_free_r_for_beginners_courses/<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -189,150 +331,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
