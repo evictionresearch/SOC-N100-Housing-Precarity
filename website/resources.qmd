@@ -3,6 +3,6 @@ title: "Resources"
 format: html
 ---
 
-[R Coding resources](learn_r.qmd)
+[R Coding Resources](learn_r.qmd)
 
 [Analyzing U.S. Census Data: Methods, Maps, and Models in R](https://walker-data.com/census-r/index.html)
