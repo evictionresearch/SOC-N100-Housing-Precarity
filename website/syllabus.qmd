@@ -177,7 +177,7 @@ AI is allowed and encouraged in this course as it is crucial to learn how to use
 
 *Be vigilant about model changes moving forward:* As AI advances, be aware of both improvements to models as well as possible problems (i.e., increasing censorship, how it was trained, developer intent, etc.). 
 
-In this class you will use [perplexity.ai](https://perplexity.ai) because it allows you to test and use multiple language models (e.g., OpenAI, Claude, Lamma, and a few more) and searches the web to find the most recent information about a topic. Access to the web supplements its knowledge and usefulness. Sign up for a free account at <https://www.perplexity.ai/backtoschool>
+In this class you will use [perplexity.ai](https://perplexity.ai) because it allows you to test and use multiple language models (e.g., OpenAI, Claude, Lamma, and a few more) and searches the web to find the most recent information about a topic. Access to the web supplements its knowledge and usefulness. Sign up for a discounted perplexity pro account at <https://plex.it/referrals/OXHAU39O>
 
 Do not use any other AI platform without permission. You will be required to provide URLs to your use of Perplexity so we can understand your use of it and help develop your skills. 
 
