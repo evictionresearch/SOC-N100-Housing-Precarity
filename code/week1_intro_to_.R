@@ -108,6 +108,13 @@ students$name
 
 students$age[2]
 
+#
+# Side note: What's the difference between an = and <- sign? 
+# <- is used to create objects (x <- 10)
+# = is used to apply values to a field, vector, or column (x <- data.frame(age = c(20, 21, 19))). 
+# Usually you'll use = to 
+#
+
 # =============================================================================
 # 7. Reading in Data
 # -----------------------------------------------------------------------------
@@ -200,6 +207,93 @@ View(mtcars)  # This will open a new tab in RStudio
 
 # Check for missing values:
 anyNA(mtcars)
+
+# =============================================================================
+# 12a. Data Manipulation with dplyr (a package within the tidyverse)
+# -----------------------------------------------------------------------------
+# The dplyr package (part of tidyverse) provides simple and powerful functions
+# for manipulating data. These commands are called "verbs" and let you select,
+# filter, arrange, create, and summarize data in a clear and readable way[2][4].
+
+# The most common dplyr commands are:
+#   - select(): Pick columns (variables)
+#   - filter(): Pick rows based on values
+#   - arrange(): Reorder rows
+#   - mutate(): Create new columns or change existing ones
+#   - summarise(): Collapse data into summary statistics
+#   - group_by(): Group data for grouped operations
+
+# Let's practice these using the mtcars dataset.
+
+# ---- 12a.1 select(): Pick Columns ----
+
+# Select only the mpg and cyl columns
+mtcars %>%
+  select(mpg, cyl)
+
+# ---- 12a.2 filter(): Pick Rows ----
+
+# Filter for cars with more than 6 cylinders
+mtcars %>%
+  filter(cyl > 6)
+
+# ---- 12a.3 arrange(): Reorder Rows ----
+
+# Arrange cars by mpg, from lowest to highest
+mtcars %>%
+  arrange(mpg)
+
+# Arrange cars by mpg, from highest to lowest
+mtcars %>%
+  arrange(desc(mpg))
+
+# ---- 12a.4 mutate(): Create or Change Columns ----
+
+# Add a new column for weight in kilograms (wt is in 1000 lbs)
+mtcars %>%
+  mutate(wt_kg = wt * 1000 * 0.453592)
+
+# ---- 12a.5 summarise(): Summary Statistics ----
+
+# Find the average mpg for all cars
+mtcars %>%
+  summarise(avg_mpg = mean(mpg))
+
+# ---- 12a.6 group_by(): Grouped Operations ----
+
+# Find the average mpg for each cylinder group
+mtcars %>%
+  group_by(cyl) %>%
+  summarise(avg_mpg = mean(mpg))
+
+# ---- 12a.7 Chaining Commands with the Pipe (%>%) ----
+
+# You can chain multiple commands together for more complex tasks.
+# Example: For cars with more than 4 cylinders, find the average mpg by cylinder group.
+
+mtcars %>%
+  filter(cyl > 4) %>%
+  group_by(cyl) %>%
+  summarise(avg_mpg = mean(mpg))
+
+# ---- 12a.8 Practice: Try These! ----
+
+# - Select the columns hp and wt
+# - Filter for cars with mpg greater than 25
+# - Arrange cars by horsepower (hp), highest to lowest
+# - Create a new column that is mpg divided by cyl
+# - Group by gear and find the max mpg for each group
+
+# Example (uncomment and fill in):
+# mtcars %>% select(hp, wt)
+# mtcars %>% filter(mpg > 25)
+# mtcars %>% arrange(desc(hp))
+# mtcars %>% mutate(mpg_per_cyl = mpg / cyl)
+# mtcars %>% group_by(gear) %>% summarise(max_mpg = max(mpg))
+
+# For more details, see the dplyr documentation and cheatsheets.
+# =============================================================================
+
 
 # =============================================================================
 # 13. Creating Plots with ggplot2: Step-by-Step

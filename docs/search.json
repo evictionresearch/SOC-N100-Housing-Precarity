@@ -60,7 +60,7 @@
     "href": "learn_r.html",
     "title": "Learn R",
     "section": "",
-    "text": "In this course, we will use Software Carpentry to learn some of the basics of R. We will cover this course in the labs."
+    "text": "https://posit.co/resources/cheatsheets/"
   },
   {
     "objectID": "learn_r.html#comparison-table",
@@ -94,8 +94,8 @@
     "objectID": "learn_r.html#software-carpentry",
     "href": "learn_r.html#software-carpentry",
     "title": "Learn R",
-    "section": "",
-    "text": "In this course, we will use Software Carpentry to learn some of the basics of R. We will cover this course in the labs."
+    "section": "Software Carpentry",
+    "text": "Software Carpentry\nIn this course, we will use Software Carpentry to learn some of the basics of R. We will cover this course in the labs."
   },
   {
     "objectID": "learn_r.html#optional-best-free-base-r-training-modules-alternatives-to-software-carpentry",
@@ -116,7 +116,7 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "R Coding Resources\nAnalyzing U.S. Census Data: Methods, Maps, and Models in R"
+    "text": "R Coding Resources\nTidycensus Book: Analyzing U.S. Census Data: Methods, Maps, and Models in R"
   },
   {
     "objectID": "resources.html#quarto",
@@ -145,5 +145,12 @@
     "title": "Housing Precarity and Displacement",
     "section": "Week 2",
     "text": "Week 2\n\nAssignments\nDue before July 17\n\nAcquire a census API key at https://api.census.gov/data/key_signup.html (takes a couple minutes).\nSign up for a Perplexity AI Pro Account at https://plex.it/referrals/OXHAU39O. The cost is minimal and I believe this code gets you a free month or something.\n\n\n\nReadings\nDue Tuesday July 15\n\nZuk et al. (2015) “Gentrification, Displacement and the Role of Public Investment: A Literature Review”\n\nDue Thursday July 17\n\nWalker (2023) “Analyzing US Census Data: Methods, Maps, and Models in R”: Preface, Ch 1, & Ch 2\n\n\n\nTuesday July 15 - Lecture\n\nSlides\nLecture Recording\n\n\n\nThursday July 17 - Lecture\n\nSlides\nLecture Recording"
+  },
+  {
+    "objectID": "learn_r.html#cheatsheets",
+    "href": "learn_r.html#cheatsheets",
+    "title": "Learn R",
+    "section": "",
+    "text": "https://posit.co/resources/cheatsheets/"
   }
 ]
