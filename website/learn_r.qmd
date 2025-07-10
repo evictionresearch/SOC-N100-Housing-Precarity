@@ -7,7 +7,7 @@ Select cheatsheets are also available in the `docs` folder of the [class github 
 
 ## Software Carpentry
 
-In this course, we will use [Software Carpentry](https://swcarpentry.github.io/r-novice-inflammation/) to learn some of the basics of R. We will cover this course in the labs. 
+[Software Carpentry](https://swcarpentry.github.io/r-novice-inflammation/) has a great walk through on how to use R. 
 
 ## (Optional) Best Free Base R Training Modules Alternative to Software Carpentry
 
