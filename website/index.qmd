@@ -7,8 +7,9 @@ author:
   - Tim Thomas
   - timthomas@berkeley.edu
 ---
-Tuesdays & Thursdays | 10am to 12pm | July 8 to July 14   
-Zoom link: [https://berkeley.zoom.us/my/timthomaszoom](https://berkeley.zoom.us/my/timthomaszoom)
+Tuesdays & Thursdays | 10am to 12pm | July 8 to August 14   
+Zoom link: [https://berkeley.zoom.us/my/timthomaszoom](https://berkeley.zoom.us/my/timthomaszoom)  
+[bCourse Site](https://bcourses.berkeley.edu/courses/1546264)
 
 ## Week 1
 ### Tuesday July 8 - Lecture
@@ -20,3 +21,26 @@ Zoom link: [https://berkeley.zoom.us/my/timthomaszoom](https://berkeley.zoom.us/
 
 ### Thursday July 10 - Lab
 * [Software Caprentry](https://swcarpentry.github.io/r-novice-inflammation/)
+
+## Week 2
+
+### Assignments
+***Due before July 17***
+
+* Acquire a census API key at <https://api.census.gov/data/key_signup.html> (takes a couple minutes).
+* Sign up for a Perplexity AI Pro Account at <https://plex.it/referrals/OXHAU39O>. The cost is minimal and I believe this code gets you a free month or something. 
+
+### Readings
+***Due Tuesday July 15***  
+
+* [Zuk et al. (2015) "Gentrification, Displacement and the Role of Public Investment: A Literature Review"](https://www.researchgate.net/profile/Karen-Chapple/publication/334638363_Gentrification_Displacement_and_the_Role_of_Public_Investment_A_Literature_Review/links/5d37697f4585153e591c453f/Gentrification-Displacement-and-the-Role-of-Public-Investment-A-Literature-Review.pdf)
+
+***Due Thursday July 17***
+
+* [Walker (2023) “Analyzing US Census Data: Methods, Maps, and Models in R”: Preface, Ch 1, & Ch 2](https://walker-data.com/census-r/index.html)
+
+### Tuesday July 15 - Lecture
+
+* Slides
+* Lecture Recording
+
