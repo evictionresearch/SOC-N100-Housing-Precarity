@@ -5,12 +5,14 @@ toc: true
 author-title: Instructor
 author: 
   - Tim Thomas
-  - timthomas@berkeley.edu
+  - <timthomas@berkeley.edu>
 ---
 Tuesdays & Thursdays | 10am to 12pm | July 8 to August 14   
 Class Zoom Link: [https://berkeley.zoom.us/my/timthomaszoom](https://berkeley.zoom.us/my/timthomaszoom)  
 [bCourse Site](https://bcourses.berkeley.edu/courses/1546264)  
-[Class Discussion Page](https://bcourses.berkeley.edu/courses/1546264/discussion_topics)
+[Class Discussion Page](https://bcourses.berkeley.edu/courses/1546264/discussion_topics)  
+
+**Office Hours**: By appointment (email me to schedule a time). 5-7pm weekdays and most any time on the weekend are often best but I will have some availability during working hours through the week. I will announce group-wide office hours for more than one person to join. 
 
 ## Week 1
 ### Tuesday July 8 - Lecture
