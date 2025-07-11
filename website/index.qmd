@@ -23,7 +23,7 @@ Class Zoom Link: <https://berkeley.zoom.us/j/99126869466>
   * [Video 2](https://berkeley.zoom.us/rec/share/3fLK5nFCklPA1iXs3_D591fofoRwb--61f18MeChXdXykII7oiEDLZQzRuHF6XA5.D6XjsmytyWgvQDJ3?startTime=1751995954000) - Passcode: Qb.V$0yg
 
 ### Thursday July 10 - Lab
-* [Software Caprentry](https://swcarpentry.github.io/r-novice-inflammation/)
+* [Lecture Recording](https://berkeley.zoom.us/rec/share/dFEsknv01skouItQ4qEHIBRkxRnaSXwb1n1abcbZOhP0TPulLCnqbE3RwIfRlbej.WQzdk5ahWgz0emhF) - Passcode: Xs1ux!6L
 
 ## Week 2
 
@@ -31,7 +31,7 @@ Class Zoom Link: <https://berkeley.zoom.us/j/99126869466>
 ***Due before July 17***
 
 * Acquire a census API key at <https://api.census.gov/data/key_signup.html> (takes a couple minutes).
-* Sign up for a Perplexity AI Pro Account at <https://plex.it/referrals/OXHAU39O>. The cost is minimal and I believe this code gets you a free month or something. 
+* Sign up for a Perplexity AI Pro Account by using Google to sign in and then enter in your Berkeley email address. 
 
 ### Readings
 ***Due Tuesday July 15***  
