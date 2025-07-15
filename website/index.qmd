@@ -8,7 +8,7 @@ author:
   - <timthomas@berkeley.edu>
 ---
 Tuesdays & Thursdays | 10am to 12pm | July 8 to August 14   
-Class Zoom Link: <https://berkeley.zoom.us/j/99126869466>    
+Class Zoom Link: <https://berkeley.zoom.us/j/99126869466?jst=3>    
 [bCourse Site](https://bcourses.berkeley.edu/courses/1546264)  
 [Class Discussion Page](https://bcourses.berkeley.edu/courses/1546264/discussion_topics)  
 

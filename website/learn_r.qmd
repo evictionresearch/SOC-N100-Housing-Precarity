@@ -13,7 +13,7 @@ Select cheatsheets are also available in the `docs` folder of the [class github 
 
 If you are looking for free, high-quality guides for learning R, here are some of the top, well-reviewed alternatives:
   
-### 1. **Harvard University’s “Data Science: R Basics” (edX/Coursera)**
+### 1. **[Harvard University’s “Data Science: R Basics” (edX/Coursera)](https://pll.harvard.edu/subject/r)**
   
 - **Overview:** A widely recommended, beginner-friendly course that covers the fundamentals of R programming, data analysis, and visualization.
 - **Key Features:**
@@ -37,7 +37,7 @@ If you are looking for free, high-quality guides for learning R, here are some o
 - **Where to find:** [swirlstats.com](https://swirlstats.com/) or install via R[^1_1].
 
 
-### 3. **R for Data Science (Online Book by Hadley Wickham)**
+### 3. **[R for Data Science (Online Book by Hadley Wickham)](https://r4ds.hadley.nz/)**
 
 - **Overview:** This free online book is a comprehensive, beginner-friendly introduction to R and RStudio, focusing on practical data analysis.
 - **Key Features:**
