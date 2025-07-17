@@ -27,11 +27,15 @@
 # =============================================================================
 # 2. How to Run Code in RStudio
 # -----------------------------------------------------------------------------
-# - You can run a line of code by clicking on it and pressing Ctrl+Enter (Windows) or Cmd+Enter (Mac).
+# - You can run a line of code by clicking on it and pressing Ctrl+Enter (Windows) or Cmd+Return (Mac).
 # - You can also highlight multiple lines and run them together.
 # - Try running the line below:
 
 1 + 1  # This should print 2 in the Console
+
+# If I want to comment something, I need to add a #
+# if I don't comment, then I don't use a hash
+# for a mac, a shortcut for commenting out something is cmd+/
 
 # =============================================================================
 # 3. Basic Math and Variables
@@ -48,9 +52,13 @@ x <- 10    # Assigns the value 10 to x
 y <- 5
 x + y      # Adds x and y
 
+rabbit <- x + y 
+
 # You can print the value of a variable by typing its name:
 
 x
+z
+rabbit
 
 # =============================================================================
 # 4. Data Types in R
@@ -62,7 +70,7 @@ x
 
 a <- 7.5          # Numeric
 b <- "Eviction"   # Character (note the quotes)
-c <- TRUE         # Logical
+c <- FALSE         # Logical
 
 # You can check the type of a variable with the class() function:
 
@@ -70,12 +78,19 @@ class(a)
 class(b)
 class(c)
 
+a
+b
+c
+
+# Help!! Anytime you want to know more about a function, you can search it in
+# the help section.
+
 # =============================================================================
 # 5. Vectors: Collections of Values
 # -----------------------------------------------------------------------------
 # A vector is a list of values of the same type.
 
-numbers <- c(1, 2, 3, 4, 5)      # Numeric vector
+numbers <- c(1, 2, 3, 4, 7)      # Numeric vector
 names <- c("Alice", "Bob", "Carmen") # Character vector
 
 numbers
@@ -83,7 +98,9 @@ names
 
 # You can access elements in a vector using square brackets:
 
-numbers[3]   # The third element (remember: R starts counting at 1)
+numbers[5]   # The third element (remember: R starts counting at 1)
+numbers[2:3]
+numbers[4:5]
 
 # =============================================================================
 # 6. Data Frames: Tables of Data
@@ -103,11 +120,13 @@ students
 # Access a column using $:
 
 students$name
+students$age
 
 # Access a specific value (row 2, column "age"):
 
 students$age[2]
 
+w = 3
 #
 # Side note: What's the difference between an = and <- sign? 
 # <- is used to create objects (x <- 10)
@@ -119,6 +138,7 @@ students$age[2]
 # 7. Reading in Data
 # -----------------------------------------------------------------------------
 # Let's read in a CSV file. We'll use a sample dataset that comes with R.
+# some_data.csv
 
 # First, see where your working directory is:
 getwd()
@@ -137,9 +157,10 @@ dim(mtcars)        # Number of rows and columns
 names(mtcars)      # Column names
 summary(mtcars)    # Summary statistics
 
-# Calculate the mean of a column:
+# Calculate the mean and median of a column:
 
 mean(mtcars$mpg)   # Average miles per gallon
+median(mtcars$mpg)   # Median miles per gallon
 
 # =============================================================================
 # 9. Introduction to tidyverse
@@ -148,11 +169,12 @@ mean(mtcars$mpg)   # Average miles per gallon
 # Let's install and load it (do this only once):
 
 # Uncomment the next line if you have not installed tidyverse before:
-# install.packages("tidyverse")
+install.packages("tidyverse")
 
 library(tidyverse)
 
 # Let's use tidyverse to select columns and filter rows:
+# Before we do that, we're going to use an thing called a pipe "%>%"
 
 mtcars %>%
   select(mpg, cyl, gear) %>%     # Select only some columns
@@ -168,22 +190,12 @@ mtcars %>%
 
 # Example (uncomment and fill in your answers):
 
-# foods <- c("Pizza", "Tacos", "Salad")
-# cities <- data.frame(
-#   city = c("Richmond", "Oakland", "Berkeley"),
-#   population = c(110000, 425000, 120000)
-# )
-# mean(students$age)
-
-# =============================================================================
-# 11. Loading Libraries (with tidyverse)
-# -----------------------------------------------------------------------------
-# Let's make sure we have the tidyverse package loaded, as it contains many useful tools.
-
-# Uncomment and run if you haven't installed tidyverse before:
-# install.packages("tidyverse")
-
-library(tidyverse)  # Loads dplyr, ggplot2, readr, tibble, and more
+foods <- c("Burritos", "Sushi", "Phad Thai")
+cities <- data.frame(
+  city = c("Seattle", "Oakland", "Baltimore"),
+  population = c(400000, 300000, 50)
+)
+mean(students$age)
 
 # =============================================================================
 # 12. Data Viewing and Exploration
@@ -212,8 +224,8 @@ anyNA(mtcars)
 # 12a. Data Manipulation with dplyr (a package within the tidyverse)
 # -----------------------------------------------------------------------------
 # The dplyr package (part of tidyverse) provides simple and powerful functions
-# for manipulating data. These commands are called "verbs" and let you select,
-# filter, arrange, create, and summarize data in a clear and readable way[2][4].
+# for manipulating data. These commands are called "verbs" or "functions" and let you select,
+# filter, arrange, create, and summarize data in a clear and readable way.
 
 # The most common dplyr commands are:
 #   - select(): Pick columns (variables)
@@ -251,13 +263,16 @@ mtcars %>%
 
 # Add a new column for weight in kilograms (wt is in 1000 lbs)
 mtcars %>%
-  mutate(wt_kg = wt * 1000 * 0.453592)
+  mutate(wt_kg = wt * 1000 * 0.453592) %>%
+  str()
+
+### LEFT OFF ###
 
 # ---- 12a.5 summarise(): Summary Statistics ----
 
 # Find the average mpg for all cars
 mtcars %>%
-  summarise(avg_mpg = mean(mpg))
+  summarise(avg_mpg = mean(mpg)) 
 
 # ---- 12a.6 group_by(): Grouped Operations ----
 
