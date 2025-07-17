@@ -1,10 +1,8 @@
 # =============================================================================
 # Week 2 R In Class Exercise: How do we measure soft displacement drivers?
 # In this week's exercise, we will be working with the American Community Survey
-# (ACS) data to measure soft displacement drivers. We will be focusing on rent
-# and housing cost burden as key indicators of displacement risk. Finally, we
-# will be using the R programming language to analyze the data and generate
-# insights.
+# (ACS) data to measure soft displacement drivers. We will be using the tidycensus
+# package to retrieve data from the US Census Bureau.
 # =============================================================================
 
 #
@@ -17,7 +15,11 @@ install.packages("tidycensus")  # Install the tidyverse package
 
 library(tidyverse)  # Load the tidyverse package
 library(tidycensus)  # Load the tidycensus package
-census_api_key("63217a192c5803bfc72aab537fe4bf19f6058326", overwrite = TRUE, install = TRUE)
+census_api_key(
+  key = "63217a192c5803bfc72aab537fe4bf19f6058326",
+  overwrite = TRUE,
+  install = TRUE
+)
 # you should replace this API key with your own. You can get one from the US
 # Census Bureau at https://api.census.gov/data/key_signup.html
 
@@ -36,11 +38,11 @@ View(vars_2022)
 
 # Get county-level area median household income (AMI) data from ACS
 sf_median_income <- get_acs(
-    geography = "county",
-    variables = "B19013_001",  # Median household income
-    year = 2022,
-    state = "CA",
-    county = "San Francisco"
+  geography = "county",
+  variables = "B19013_001",  # Median household income
+  year = 2022,
+  state = "CA",
+  county = "San Francisco"
 )
 
 # Lets look at the different columns in the data.
@@ -60,12 +62,12 @@ sf_median_income
 
 # We can do this by using the "mutate" function in tidyverse.
 sf_ami <- sf_median_income %>%
-    mutate(
-        # Calculate low income threshold as 80% of median income estimate
-        low_income = estimate * .8,
-        # Calculate high income threshold as 120% of median income estimate
-        high_income = estimate * 1.2
-    )
+  mutate(
+  # Calculate low income threshold as 80% of median income estimate
+  low_income = estimate * .8,
+  # Calculate high income threshold as 120% of median income estimate
+  high_income = estimate * 1.2
+  )
 
 sf_ami
 ######################################################################
@@ -82,22 +84,23 @@ sf_ami
 ######################################################################
 
 # Get median household income for Jackson, Mississippi
-jackson_median_income <- get_acs(
+jackson_median_income <-
+  get_acs(
     geography = "county",
     variables = "B19013_001",  # Median household income
     year = 2022,
     state = "Mississippi",
     county = "Hinds"
-) %>%
-    mutate(
-        low_income = estimate * .8,
-        high_income = estimate * 1.2
-    )
+  ) %>%
+  mutate(
+    low_income = estimate * .8,
+    high_income = estimate * 1.2
+  )
 
 # Let's now compare the two by combining the rows
 combined_ami <-
-    bind_rows(sf_ami, jackson_median_income) %>%
-    rename(ami = estimate) # Rename the estimate column to AMI
+  bind_rows(sf_ami, jackson_median_income) %>%
+  rename(ami = estimate) # Rename the estimate column to AMI
 
 combined_ami
 
@@ -122,17 +125,17 @@ View(vars_2022)
 # - B19013I_001: Hispanic/Latino
 
 sf_race_income <- get_acs(
-    geography = "county",
-    variables = c(
-        "B19013_001",  # Total median household income
-        "B19013A_001", # White alone
-        "B19013B_001", # Black alone
-        "B19013D_001", # Asian alone
-        "B19013I_001"  # Hispanic/Latino
-    ),
-    year = 2022,
-    state = "CA",
-    county = "San Francisco"
+  geography = "county",
+  variables = c(
+  "B19013_001",  # Total median household income
+  "B19013A_001", # White alone
+  "B19013B_001", # Black alone
+  "B19013D_001", # Asian alone
+  "B19013I_001"  # Hispanic/Latino
+  ),
+  year = 2022,
+  state = "CA",
+  county = "San Francisco"
 )
 
 sf_race_income
@@ -140,16 +143,16 @@ sf_race_income
 # Let's also clean up the data a little and name the
 # variable field
 sf_ami_race <-
-    sf_race_income %>%
-    mutate(
-        variable = case_when(
-            variable == "B19013_001" ~ "ami",
-            variable == "B19013A_001" ~ "white",
-            variable == "B19013B_001" ~ "black",
-            variable == "B19013D_001" ~ "asian",
-            variable == "B19013I_001" ~ "latinx"
-        )
-    )
+  sf_race_income %>%
+  mutate(
+  variable = case_when(
+    variable == "B19013_001" ~ "ami",
+    variable == "B19013A_001" ~ "white",
+    variable == "B19013B_001" ~ "black",
+    variable == "B19013D_001" ~ "asian",
+    variable == "B19013I_001" ~ "latinx"
+  )
+  )
 
 sf_ami_race
 
@@ -158,10 +161,10 @@ sf_ami_race
 # manipulate the data more easily.
 
 sf_ami_race_wide <- sf_ami_race %>%
-    pivot_wider(
-        names_from = variable,
-        values_from = estimate
-    )
+  pivot_wider(
+  names_from = variable,
+  values_from = estimate
+  )
 
 pivot_wider
 help(pivot_wider)
@@ -173,11 +176,11 @@ sf_ami_race_wide
 # can just remove "moe" before we pivot the table.
 
 sf_ami_race_wide <- sf_ami_race %>%
-    select(-moe) %>%  # Remove the margin of error column
-    pivot_wider(
-        names_from = variable,
-        values_from = estimate
-    )
+  select(-moe) %>%  # Remove the margin of error column
+  pivot_wider(
+  names_from = variable,
+  values_from = estimate
+  )
 
 sf_ami_race_wide
 # Now it's a single line.
@@ -188,14 +191,14 @@ sf_ami_race_wide
 # Let's now create our AMI brackets and compare racial groups. We'll also
 # clean up the variable order in the process.
 sf_ami_race_wide <-
-    sf_ami_race_wide %>%
-    mutate(
-        low_income = ami * .8,
-        high_income = ami * 1.2
-    ) %>%
-    select(
-        county = NAME, low_income, ami, high_income, white, black, asian, latinx
-    )
+  sf_ami_race_wide %>%
+  mutate(
+  low_income = ami * .8,
+  high_income = ami * 1.2
+  ) %>%
+  select(
+  county = NAME, low_income, ami, high_income, white, black, asian, latinx
+  )
 
 sf_ami_race_wide
 ######################################################################
@@ -222,11 +225,11 @@ sf_ami_race_wide
 # First, we need to reshape the data for plotting because ggplot2 works best
 # with "long" format data.
 sf_ar_plot_df <- sf_ami_race_wide %>%
-    pivot_longer(
-        cols = c(white, black, asian, latinx),
-        names_to = "race",
-        values_to = "income"
-    )
+  pivot_longer(
+  cols = c(white, black, asian, latinx),
+  names_to = "race",
+  values_to = "income"
+  )
 
 sf_ar_plot_df
 
@@ -237,17 +240,17 @@ sf_ar_plot_df
 
 # Create a bar plot showing income by race
 sf_race_ami_plot <-
-    # ggplot() creates a new plot object
-    # - sf_ar_plot_df: the data frame containing our data
-    # - aes(): defines aesthetic mappings - how variables map to visual properties
-    #   - x = Race: puts Race variable on x-axis
-    #   - y = Income: puts Income variable on y-axis
-    ggplot(sf_ar_plot_df, aes(x = race, y = income)) +
-    # geom_bar() adds the bars to the plot
-    # - stat="identity": tells ggplot to use actual values (not counts)
-    # - fill="steelblue": sets the color of the bars to steelblue
-    # Without stat="identity", geom_bar would count occurrences instead of using values
-    geom_bar(stat = "identity", fill = "steelblue")
+  # ggplot() creates a new plot object
+  # - sf_ar_plot_df: the data frame containing our data
+  # - aes(): defines aesthetic mappings - how variables map to visual properties
+  #   - x = Race: puts Race variable on x-axis
+  #   - y = Income: puts Income variable on y-axis
+  ggplot(sf_ar_plot_df, aes(x = race, y = income)) +
+  # geom_bar() adds the bars to the plot
+  # - stat="identity": tells ggplot to use actual values (not counts)
+  # - fill="steelblue": sets the color of the bars to steelblue
+  # Without stat="identity", geom_bar would count occurrences instead of using values
+  geom_bar(stat = "identity", fill = "steelblue")
 
 sf_race_ami_plot
 # this is a basic plot. Let's spice it up a little by cleaning and adding some
@@ -255,35 +258,35 @@ sf_race_ami_plot
 
 # Start with the base plot created earlier
 sf_race_ami_plot +
-    # Add a horizontal line for low income threshold
-    # - yintercept: specifies where to draw the line using the low_income value
-    # - linetype: makes the line dashed
-    # - color: sets the line color to red
-    geom_hline(yintercept = sf_ami_race_wide$low_income, linetype = "dashed", color = "red") +
+  # Add a horizontal line for low income threshold
+  # - yintercept: specifies where to draw the line using the low_income value
+  # - linetype: makes the line dashed
+  # - color: sets the line color to red
+  geom_hline(yintercept = sf_ami_race_wide$low_income, linetype = "dashed", color = "red") +
 
-    # Add a horizontal line for high income threshold
-    # - Same parameters as above but using high_income value
-    geom_hline(yintercept = sf_ami_race_wide$high_income, linetype = "dashed", color = "blue") +
+  # Add a horizontal line for high income threshold
+  # - Same parameters as above but using high_income value
+  geom_hline(yintercept = sf_ami_race_wide$high_income, linetype = "dashed", color = "blue") +
 
-    # Add labels to the plot
-    # - title: main plot title
-    # - y: y-axis label
-    # - x: x-axis label
-    labs(title = "Median Household Income by Race in San Francisco",
-          y = "Income ($)",
-          x = "Race/Ethnicity") +
+  # Add labels to the plot
+  # - title: main plot title
+  # - y: y-axis label
+  # - x: x-axis label
+  labs(title = "Median Household Income by Race in San Francisco",
+     y = "Income ($)",
+     x = "Race/Ethnicity") +
 
-    # Apply a minimal theme to clean up the plot's appearance
-    theme_minimal() +
+  # Apply a minimal theme to clean up the plot's appearance
+  theme_minimal() +
 
-    # Customize the x-axis text
-    # - angle: rotate text 45 degrees
-    # - hjust: adjust horizontal justification
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  # Customize the x-axis text
+  # - angle: rotate text 45 degrees
+  # - hjust: adjust horizontal justification
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
 
-    # Format y-axis labels as currency
-    # - scales::dollar_format() adds dollar signs and commas to numbers
-    scale_y_continuous(labels = scales::dollar_format())
+  # Format y-axis labels as currency
+  # - scales::dollar_format() adds dollar signs and commas to numbers
+  scale_y_continuous(labels = scales::dollar_format())
 
 
 ######################
@@ -292,15 +295,15 @@ sf_race_ami_plot +
 # Plotting with reordered bars
 
 ggplot(sf_ar_plot_df, aes(x = reorder(race, income), y = income)) +
-    geom_bar(stat = "identity", fill = "steelblue") +
-    geom_hline(yintercept = sf_ami_race_wide$low_income, linetype = "dashed", color = "red") +
-    geom_hline(yintercept = sf_ami_race_wide$high_income, linetype = "dashed", color = "blue") +
-    labs(title = "Median Household Income by Race in San Francisco",
-         y = "Income ($)",
-         x = "Race/Ethnicity") +
-    theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    scale_y_continuous(labels = scales::dollar_format())
+  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_hline(yintercept = sf_ami_race_wide$low_income, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = sf_ami_race_wide$high_income, linetype = "dashed", color = "blue") +
+  labs(title = "Median Household Income by Race in San Francisco",
+     y = "Income ($)",
+     x = "Race/Ethnicity") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = scales::dollar_format())
 
 ######################################################################
 # Note: Plots are effective ways to tell a story. However, keep your
@@ -323,19 +326,19 @@ ggplot(sf_ar_plot_df, aes(x = reorder(race, income), y = income)) +
 # -----------------------------------------------------------------------------
 # We will repeat the same process for the 9 county bay area.
 bay_area_median_income <- get_acs(
-    geography = "county",
-    variables = c(
-        "ami" = "B19013_001",  # Total median household income
-        "white" = "B19013A_001", # White alone
-        "black" = "B19013B_001", # Black alone
-        "asian" = "B19013D_001", # Asian alone
-        "latinx" = "B19013I_001"  # Hispanic/Latino
-        # Here we renamed the "variable" column from the beginning.
-    ),
-    year = 2022,
-    state = "CA",
-    county = c("Alameda", "Contra Costa", "Marin", "Napa", "San Francisco",
-               "San Mateo", "Santa Clara", "Solano", "Sonoma")
+  geography = "county",
+  variables = c(
+  "ami" = "B19013_001",  # Total median household income
+  "white" = "B19013A_001", # White alone
+  "black" = "B19013B_001", # Black alone
+  "asian" = "B19013D_001", # Asian alone
+  "latinx" = "B19013I_001"  # Hispanic/Latino
+  # Here we renamed the "variable" column from the beginning.
+  ),
+  year = 2022,
+  state = "CA",
+  county = c("Alameda", "Contra Costa", "Marin", "Napa", "San Francisco",
+         "San Mateo", "Santa Clara", "Solano", "Sonoma")
 )
 
 bay_area_median_income
@@ -353,43 +356,91 @@ summary(bay_area_median_income)
 
 # Now, let's process the data for the Bay Area.
 bay_area_ami <- bay_area_median_income %>%
-    select(-moe) %>%  # Remove the margin of error column
-    pivot_wider(
-        names_from = variable,
-        values_from = estimate
-    ) %>%
-    group_by(GEOID) %>%  # Group data by county using GEOID
-    mutate(
-        # Calculate low income threshold as 80% of ami
-        low_income = ami * .8,
-        # Calculate high income threshold as 120% of ami
-        high_income = ami * 1.2
-    ) %>%
-    select(
-        county = NAME, low_income, ami, high_income, white, black, asian, latinx
-    )
-    # add ungroup to remove GEOID from the above selection.
+  select(-moe) %>%  # Remove the margin of error column
+  pivot_wider(
+  names_from = variable,
+  values_from = estimate
+  ) %>%
+  group_by(GEOID) %>%  # Group data by county using GEOID
+  mutate(
+  # Calculate low income threshold as 80% of ami
+  low_income = ami * .8,
+  # Calculate high income threshold as 120% of ami
+  high_income = ami * 1.2
+  ) %>%
+  select(
+  county = NAME, low_income, ami, high_income, white, black, asian, latinx
+  )
+  # add ungroup to remove GEOID from the above selection.
 
 bay_area_ami
 
 # Create a plot for the Bay Area and race
 bay_area_ami %>%
-    pivot_longer(
-        cols = c(white, black, asian, latinx),
-        names_to = "race",
-        values_to = "income"
-    ) %>%
-    ggplot(aes(x = county, y = reorder(income, race), fill = race)) +
-    geom_col(position = "dodge") +
-    geom_hline(aes(yintercept = mean(bay_area_ami$ami)), linetype = "dashed", color = "red") +
-    theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    labs(
-        title = "Median Household Income by Race Across Bay Area Counties",
-        x = "County",
-        y = "Median Household Income ($)",
-        fill = "Race/Ethnicity"
-    )
+  pivot_longer(
+  cols = c(white, black, asian, latinx),
+  names_to = "race",
+  values_to = "income"
+  ) %>%
+  ggplot(aes(x = county, y = reorder(income, race), fill = race)) +
+  geom_col(position = "dodge") +
+  geom_hline(aes(yintercept = mean(bay_area_ami$ami)), linetype = "dashed", color = "red") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(
+  title = "Median Household Income by Race Across Bay Area Counties",
+  x = "County",
+  y = "Median Household Income ($)",
+  fill = "Race/Ethnicity"
+  )
+
+######################################################################
+# Week 2: Census Data Analysis - Primary Steps Summary
+######################################################################
+
+# ## Setup
+# 1. Install required packages: `tidyverse` and `tidycensus`
+# 2. Load libraries: `library(tidyverse)` and `library(tidycensus)`
+# 3. Set up Census API key using `census_api_key()`
+
+# ## Basic Data Retrieval
+# 1. Load variable definitions: `load_variables(year, "acs5")`
+# 2. Get ACS data using `get_acs()` with parameters:
+#    - `geography`: type of area (county, tract, etc.)
+#    - `variables`: Census variable codes
+#    - `year`: data year
+#    - `state`: state code
+#    - `county`: county name (if applicable)
+
+# ## Data Processing
+# 1. **Clean variable names**: Use `mutate()` with `case_when()` to rename variables
+# 2. **Remove margin of error**: Use `select(-moe)` to exclude MOE column
+# 3. **Reshape data**: Use `pivot_wider()` to convert from long to wide format
+# 4. **Calculate thresholds**: Use `mutate()` to create income brackets (e.g., 80% and 120% of median)
+
+# ## Data Visualization
+# 1. **Prepare data for plotting**: Use `pivot_longer()` to convert back to long format
+# 2. **Create plots**: Use `ggplot()` with appropriate geoms:
+#    - `geom_bar()` for bar charts
+#    - `geom_hline()` for reference lines
+#    - `geom_col()` for grouped bars
+# 3. **Customize plots**: Add labels, themes, and formatting
+
+# ## Key Functions Used
+# - `get_acs()`: Retrieve Census data
+# - `pivot_wider()`: Convert long to wide format
+# - `pivot_longer()`: Convert wide to long format
+# - `mutate()`: Create new variables
+# - `select()`: Choose specific columns
+# - `ggplot()`: Create visualizations
+# - `bind_rows()`: Combine datasets
+
+# ## Common Census Variables
+# - `B19013_001`: Median household income
+# - `B19013A_001`: White alone median income
+# - `B19013B_001`: Black alone median income
+# - `B19013D_001`: Asian alone median income
+# - `B19013I_001`: Hispanic/Latino median income
 
 ######################################################################
 ######################################################################
