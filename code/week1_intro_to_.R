@@ -57,7 +57,7 @@ rabbit <- x + y
 # You can print the value of a variable by typing its name:
 
 x
-z
+y
 rabbit
 
 # =============================================================================
@@ -144,9 +144,25 @@ w = 3
 getwd()
 
 # Let's use the built-in 'mtcars' dataset for now:
+# Below is an example of reading in data that's stored within a package. 
+# In this case we use the `data` function to pull in this mtcars dataset
+# that lives inside R base package. 
 
 data(mtcars)   # Loads the dataset
 head(mtcars)   # Shows the first 6 rows
+
+# If we wanted to read in data on our computer, we would use something 
+# like read.csv, which is a base function. What is a base function you ask? it's what gets loaded anytime you open R. In other words, you don't have to call it in. 
+
+car_speeds <- read.csv("~/SOC-N100-Housing-Precarity/data/software_carpentry/car-speeds.csv")
+
+# ~ means home directory
+# / means find what's inside the next section of the directory. 
+
+head(car_speeds)
+
+# This is likely the most common way you will pull in data from a machine or location. 
+# There are also other ways to pull in data online, using something called an API. We'll be tapping into the U.S. Census' API a lot in this class. 
 
 # =============================================================================
 # 8. Basic Data Exploration
@@ -266,8 +282,6 @@ mtcars %>%
   mutate(wt_kg = wt * 1000 * 0.453592) %>%
   str()
 
-### LEFT OFF ###
-
 # ---- 12a.5 summarise(): Summary Statistics ----
 
 # Find the average mpg for all cars
@@ -300,11 +314,11 @@ mtcars %>%
 # - Group by gear and find the max mpg for each group
 
 # Example (uncomment and fill in):
-# mtcars %>% select(hp, wt)
-# mtcars %>% filter(mpg > 25)
-# mtcars %>% arrange(desc(hp))
-# mtcars %>% mutate(mpg_per_cyl = mpg / cyl)
-# mtcars %>% group_by(gear) %>% summarise(max_mpg = max(mpg))
+mtcars %>% select(hp, wt)
+mtcars %>% filter(mpg > 25)
+mtcars %>% arrange(desc(hp))
+mtcars %>% mutate(mpg_per_cyl = mpg / cyl)
+mtcars %>% group_by(gear) %>% summarise(max_mpg = max(mpg))
 
 # For more details, see the dplyr documentation and cheatsheets.
 # =============================================================================
@@ -318,14 +332,17 @@ mtcars %>%
 
 # ---- 13.1 The Simplest Plot: Histogram of mpg ----
 
-ggplot(mtcars, aes(x = mpg)) +
+ggplot(mtcars, aes(x = mpg)) + # in ggplot, we use a + instead of %>%
   geom_histogram()  # Default bins
 
 # ---- 13.2 Add Labels and Change Color ----
 
 ggplot(mtcars, aes(x = mpg)) +
-  geom_histogram(fill = "skyblue", color = "black") +
-  labs(title = "Histogram of Miles Per Gallon", x = "Miles Per Gallon", y = "Count")
+  geom_histogram(fill = "#7ECDBB", color = "yellow") +
+  labs(title = "Histogram of Miles Per Gallon", x = "Miles Per Gallon", y = "Frequency")
+
+# Colors!! https://r-charts.com/color-palettes/
+# https://colorbrewer2.org/#type=diverging&scheme=RdBu&n=7
 
 # ---- 13.3 Bar Plot: Number of Cars by Cylinder ----
 
@@ -337,13 +354,26 @@ ggplot(mtcars, aes(x = factor(cyl))) +
 
 ggplot(mtcars, aes(x = hp, y = mpg)) +
   geom_point() +
-  labs(title = "MPG vs. Horsepower", x = "Horsepower", y = "Miles Per Gallon")
+  labs(title = "MPG vs. Horsepower", x = "Horsepower", y = "Miles Per Gallon") 
+
+# Add a fitted line to your points
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point() +
+  labs(title = "MPG vs. Horsepower", x = "Horsepower", y = "Miles Per Gallon") + 
+  geom_smooth()
 
 # ---- 13.5 Boxplot: MPG by Cylinder ----
 
 ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
   geom_boxplot(fill = "lightgreen") +
   labs(title = "MPG by Cylinder", x = "Cylinders", y = "Miles Per Gallon")
+
+mtcars %>% group_by(cyl) %>% summarize(median = median(mpg))
+
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_violin(fill = "blue") +
+  labs(title = "MPG by Cylinder", x = "Cylinders", y = "Miles Per Gallon")
+  
 
 # ---- 13.6 Customizing Plots: Themes and Colors ----
 
@@ -355,7 +385,8 @@ ggplot(mtcars, aes(x = hp, y = mpg, color = factor(gear))) +
 # ---- 13.7 Saving a Plot ----
 
 # Save your last plot to a file (uncomment to use):
-# ggsave("my_first_plot.png")
+ggsave("my_first_plot.png")
+ggsave("~/SOC-N100-Lab-Code/plots/my_first_plot.png")
 
 # =============================================================================
 # 14. Your Turn: Try Making Plots!
@@ -367,9 +398,9 @@ ggplot(mtcars, aes(x = hp, y = mpg, color = factor(gear))) +
 
 # Example (uncomment and fill in your answers):
 
-# ggplot(mtcars, aes(x = hp)) + geom_histogram()
-# ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()
-# ggplot(mtcars, aes(x = factor(gear))) + geom_bar()
+ggplot(mtcars, aes(x = hp)) + geom_histogram()
+ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()
+ggplot(mtcars, aes(x = factor(gear))) + geom_bar()
 
 # =============================================================================
 # 15. Next Steps
