@@ -47,9 +47,6 @@ Class Zoom Link: <https://berkeley.zoom.us/j/99126869466?jst=3>
 * [Slides](https://docs.google.com/presentation/d/1sAHFBSSwSBNzVZs7TF1Rk_gCMOIjwkNiHmo3nlTylB8/edit?slide=id.g32100058b3b_0_3#slide=id.g32100058b3b_0_3)
 * Lecture Recording
 
-### Thursday July 17 - Lecture
-
-* Slides
-* Lecture Recording
+### Thursday July 17 - Lab
 
 
