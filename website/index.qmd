@@ -8,7 +8,7 @@ author:
   - <timthomas@berkeley.edu>
 ---
 Tuesdays & Thursdays | 10am to 12pm | July 8 to August 14   
-Class Zoom Link: <https://berkeley.zoom.us/j/99126869466?jst=3>    
+[Class Zoom Link](https://berkeley.zoom.us/j/99494916996?pwd=IQBGF2aswPwTpemADGSM3dK0zICgHy.1&jst=2)  
 [bCourse Site](https://bcourses.berkeley.edu/courses/1546264)  
 [Class Discussion Page](https://bcourses.berkeley.edu/courses/1546264/discussion_topics)  
 
@@ -45,8 +45,30 @@ Class Zoom Link: <https://berkeley.zoom.us/j/99126869466?jst=3>
 ### Tuesday July 15 - Lecture
 
 * [Slides](https://docs.google.com/presentation/d/1sAHFBSSwSBNzVZs7TF1Rk_gCMOIjwkNiHmo3nlTylB8/edit?slide=id.g32100058b3b_0_3#slide=id.g32100058b3b_0_3)
-* Lecture Recording
+* Lecture Recording 
 
 ### Thursday July 17 - Lab
+
+## Week 3
+### Readings 
+***Due July 23 before lab***
+
+* [Walker (2023) Chapter 3 & Chapter 4](https://walker-data.com/census-r/wrangling-census-data-with-tidyverse-tools.html)
+
+### Tuesday July 22 - Lecture
+
+* Slides  
+* Lecture Recording 
+
+### Thursday July 23 - Lab
+
+## Week 4
+
+### Readings 
+
+[Bates (2013) "Gentrification and Displacement Study: Implementing an Equitable Inclusive Development Strategy in the Context of Gentrification"](https://www.portland.gov/sites/default/files/2020-01/2-gentrification-and-displacement-study-05.18.13.pdf)
+
+
+
 
 
