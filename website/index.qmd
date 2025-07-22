@@ -15,25 +15,25 @@ Tuesdays & Thursdays | 10am to 12pm | July 8 to August 14
 **Office Hours**: By appointment (email me to schedule a time). 5-7pm weekdays and most any time on the weekend are often best but I will have some availability during working hours through the week. I will announce group-wide office hours for more than one person to join. 
 
 ## Week 1
-### Tuesday July 8 - Lecture
+#### Tuesday July 8 - Lecture
 * [Slides](https://docs.google.com/presentation/d/1nHe2SQmLnlvXZnCW8O6uzEcM15XqA3w2flZ4ntPqbM0)
 * [Syllabus](syllabus.qmd)
 * Lecture Recording
   * [Video 1](https://drive.google.com/drive/folders/1e2GNPfaqiuiEkfac4mfEL6bF2y4vCeUo?usp=drive_link)
   * [Video 2](https://berkeley.zoom.us/rec/share/3fLK5nFCklPA1iXs3_D591fofoRwb--61f18MeChXdXykII7oiEDLZQzRuHF6XA5.D6XjsmytyWgvQDJ3?startTime=1751995954000) - Passcode: Qb.V$0yg
 
-### Thursday July 10 - Lab
+#### Thursday July 10 - Lab
 * [Lecture Recording](https://berkeley.zoom.us/rec/share/dFEsknv01skouItQ4qEHIBRkxRnaSXwb1n1abcbZOhP0TPulLCnqbE3RwIfRlbej.WQzdk5ahWgz0emhF) - Passcode: Xs1ux!6L
 
 ## Week 2
 
-### Assignments
+#### Assignments
 ***Due before July 17***
 
 * Acquire a census API key at <https://api.census.gov/data/key_signup.html> (takes a couple minutes).
 * Sign up for a Perplexity AI Pro Account by using Google to sign in and then enter in your Berkeley email address. 
 
-### Readings
+#### Readings
 ***Due Tuesday July 15***  
 
 * [Zuk et al. (2015) "Gentrification, Displacement and the Role of Public Investment: A Literature Review"](https://www.researchgate.net/profile/Karen-Chapple/publication/334638363_Gentrification_Displacement_and_the_Role_of_Public_Investment_A_Literature_Review/links/5d37697f4585153e591c453f/Gentrification-Displacement-and-the-Role-of-Public-Investment-A-Literature-Review.pdf)
@@ -42,30 +42,30 @@ Tuesdays & Thursdays | 10am to 12pm | July 8 to August 14
 
 * [Walker (2023) “Analyzing US Census Data: Methods, Maps, and Models in R”: Preface, Ch 1, & Ch 2](https://walker-data.com/census-r/index.html)
 
-### Tuesday July 15 - Lecture
+#### Tuesday July 15 - Lecture
 
 * [Slides](https://docs.google.com/presentation/d/1sAHFBSSwSBNzVZs7TF1Rk_gCMOIjwkNiHmo3nlTylB8/edit?slide=id.g32100058b3b_0_3#slide=id.g32100058b3b_0_3)
 * Lecture Recording 
 
-### Thursday July 17 - Lab
+#### Thursday July 17 - Lab
 
 ## Week 3
-### Readings 
+#### Readings 
 ***Due July 23 before lab***
 
 * [Walker (2023) Chapter 3 & Chapter 4](https://walker-data.com/census-r/wrangling-census-data-with-tidyverse-tools.html)
 
-### Tuesday July 22 - lab
+#### Tuesday July 22 - Lab
 
 * Lab Recording 
 
-### Thursday July 23 - Lab
+#### Thursday July 23 - Lab
 
 * Lab Recording
 
 ## Week 4
 
-### Readings 
+#### Readings 
 
 [Bates (2013) "Gentrification and Displacement Study: Implementing an Equitable Inclusive Development Strategy in the Context of Gentrification"](https://www.portland.gov/sites/default/files/2020-01/2-gentrification-and-displacement-study-05.18.13.pdf)
 
