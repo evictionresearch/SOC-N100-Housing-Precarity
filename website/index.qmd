@@ -55,12 +55,13 @@ Tuesdays & Thursdays | 10am to 12pm | July 8 to August 14
 
 * [Walker (2023) Chapter 3 & Chapter 4](https://walker-data.com/census-r/wrangling-census-data-with-tidyverse-tools.html)
 
-### Tuesday July 22 - Lecture
+### Tuesday July 22 - lab
 
-* Slides  
-* Lecture Recording 
+* Lab Recording 
 
 ### Thursday July 23 - Lab
+
+* Lab Recording
 
 ## Week 4
 
