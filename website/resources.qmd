@@ -3,6 +3,12 @@ title: "Resources"
 format: html
 ---
 
+## Class Materials
 [R Coding Resources](learn_r.qmd)
 
 Tidycensus Book: [Analyzing U.S. Census Data: Methods, Maps, and Models in R](https://walker-data.com/census-r/index.html)
+
+## Additional Recommendations
+[Decolonizing Methodologies](https://gordonconwell.store/products/decolonizing-methodologies-research-and-indigenous-peoples-3rd-edition)
+
+[The Color of Law]()
