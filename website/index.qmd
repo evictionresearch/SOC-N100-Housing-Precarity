@@ -70,7 +70,9 @@ Tuesdays & Thursdays | 10am to 12pm | July 8 to August 14
 
 #### Readings 
 
-[Bates (2013) "Gentrification and Displacement Study: Implementing an Equitable Inclusive Development Strategy in the Context of Gentrification"](https://www.portland.gov/sites/default/files/2020-01/2-gentrification-and-displacement-study-05.18.13.pdf)
+* [Walker (2023) Chapters 5 & 6](https://walker-data.com/census-r/census-geographic-data-and-applications-in-r.html)
+
+* [Bates (2013) "Gentrification and Displacement Study: Implementing an Equitable Inclusive Development Strategy in the Context of Gentrification"](https://www.portland.gov/sites/default/files/2020-01/2-gentrification-and-displacement-study-05.18.13.pdf)
 
 
 
