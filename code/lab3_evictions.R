@@ -18,7 +18,7 @@ library(qs) # for reading qs files
 # Berkeley and link it to census conditions.
 # ==========================================================================
 
-indiana_evictions <- qread("~/git/evictionresearch/MaCSS-244a-Spring25/data/evictions/d5_case_aggregated.qs")
+indiana_evictions <- qread("data/evictions/d5_case_aggregated.qs")
 
 glimpse(indiana_evictions)
 
@@ -93,7 +93,7 @@ pivot_wider(
 )
 
 co_census
-qsave(co_census, "~/git/evictionresearch/MaCSS-244a-Spring25/data/census/in_co_renters.qs")
+qsave(co_census, "data/census/in_co_renters.qs")
 # Now lets merge the census data to the eviction rates
 in_rates <- in_rates %>%
   left_join(co_census, by = c("county_geoid" = "GEOID"))
