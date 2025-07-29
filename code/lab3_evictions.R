@@ -80,6 +80,10 @@ pivot_wider(
 co_census
 
 #### Why did it give us NA's? ####
+# Because the MOE also has unique values for each estimate and therefore takes
+# account for these unique values when pivoting wider.
+
+# Let's do this again and remove these unique values before we pivot wider.
 
 co_census <- get_acs(
   geography = "county",
@@ -93,7 +97,45 @@ pivot_wider(
 )
 
 co_census
-qsave(co_census, "~/SOC-N100-Housing-Precarity/data/census/in_co_renters.qs")
+
+# Now let's save this file.
+# We can save it in several different ways:
+# 1. as a CSV (comma separated value) which is like a very basice excel spreadsheet.
+# This is a great format that can be read by any coding language. One issue
+# though is that if the data are large, it can lead to saving a very large file.
+getwd() # shows me where R's working directory is currently pointing.
+write_csv(co_census, "~/SOC-N100-Housing-Precarity/data/in_co_renters.csv")
+
+###############################################################################
+# Paths and Directories in R
+#
+# When you save a file in R, you need to tell your computer where you want that
+# file to go. Computers organize files in folders, which we call directories in
+# coding. A path is just the “address” that tells R how to find a specific file
+# or folder.
+#
+# A directory is like a folder on your computer.
+#
+# A path shows the route to a file or folder. For example, the path
+# ~/SOC-N100-Housing-Precarity/data/census/in_co_renters.csv
+# tells R to look inside several folders, one inside another, until it finds
+# (or creates) the file called in_co_renters.csv.
+#
+# R always “starts” in a certain directory called the working directory. You can
+# see what that is by using:
+#
+# getwd()
+#
+# If you give a path that starts with ~, it means “start at my home directory”
+# (the main folder for your user account).
+###############################################################################
+
+# You can also save a file by compressing it. There are many compression formats
+# my favorite is `qs` which stands for "quick serialization". It compresses a
+# saved object and can read these objects super fast. This is very helpful
+# when you are working with large datasets.
+qsave(co_census, "~/SOC-N100-Housing-Precarity/data/in_co_renters.qs")
+
 # Now lets merge the census data to the eviction rates
 in_rates <- in_rates %>%
   left_join(co_census, by = c("county_geoid" = "GEOID"))
@@ -140,6 +182,8 @@ in_rates_clean_2019 <- in_rates %>%
     p_black_renters
   ) %>%
   filter(year == 2019)
+
+in_rates_clean_2019
 
 # How can we compare the eviction rate to the Black eviction rate?
 # We can make a scatter plot of the two variables.
@@ -190,19 +234,46 @@ indiana_evictions %>%
   summarize(
     avg_evictions = mean(filings),
     total_evictions = sum(filings)
+
+
+# Calculate average evictions per county
+avg_evictions_county <-
+  indiana_evictions %>%
+  group_by(county) %>%
+  summarize(
+    avg_evictions = mean(filings, na.rm = TRUE),
+    total_evictions = sum(filings)
   ) # Returns one row per county
+
+avg_evictions_county
+
+# Plot average evictions per county
+ggplot(avg_evictions_county, aes(x = reorder(county, avg_evictions), y = avg_evictions)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  theme_minimal() +
+  labs(
+    title = "Average Evictions per County in Indiana",
+    x = "County",
+    y = "Average Evictions"
+  )
+
 
 # reframe():
 # - Can return any number of rows per group
 # - Better for calculations that may produce multiple rows
 # - Preserves grouping structure
 # Example: Getting quarterly eviction counts
+
+
+# Add quarter and year columns based on plot_date
 indiana_evictions %>%
   group_by(county, year) %>%
   reframe(
     quarter = 1:4,
     evictions = rep(sum(filings)/4, 4) # Simplified example dividing yearly total into quarters
-  ) # Returns 4 rows per county-year
+  )
+
 
 # Key takeaway:
 # - Use summarize() when you want one summary row per group
