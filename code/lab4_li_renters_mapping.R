@@ -430,7 +430,7 @@ tm_shape(li_sf3) +
 
 # Let's pull in our eviction data from last week into this map. Let's say we want to look at one year of eviction data.
 librarian::shelf(qs)
-indiana_evictions <- qread("~/git/evictionresearch/MaCSS-244a-Spring25/data/evictions/d5_case_aggregated.qs")
+indiana_evictions <- qread("~/git/evictionresearch/SOC-N100-Housing-Precarity/data/evictions/d5_case_aggregated.qs")
 
 # Which years seem to have complete data?
 indiana_evictions %>%

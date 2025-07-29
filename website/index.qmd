@@ -75,13 +75,13 @@ Tuesdays & Thursdays | 10am to 12pm | July 8 to August 14
 ***Due Thursday July 31***  
 * [Walker (2023) Chapters 5 & 6](https://walker-data.com/census-r/census-geographic-data-and-applications-in-r.html)
 
-#### Tuesday July 29 - Lecture
+#### Tuesday July 29 - Lab
 
 * Class Recording
 
 #### Thursday July 31 - Lab
 
-* Review San Diego Displacement Study  
+* [Review San Diego Displacement Study](https://urban-displacement.github.io/edr-sandag/)
 * Lab Recording
 
 ## Week 5
@@ -113,4 +113,12 @@ These assignments will be graded on the [scale in the syllabus](syllabus.html#co
 * Form randomly assigned groups of 2 or 3 and discussion on final group project  
 * Draft some ideas on final project and present to the group  
 * Class Recording
+
+#### Thursday August 6 - Lab
+
+## Week 6 
+
+
+
+
 
