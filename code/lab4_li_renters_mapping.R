@@ -80,7 +80,7 @@ View(acs5_vars)
 
 # If we wanted a mutually exclusive comparison between the two we would have to choose White Alone, Not Hispanic AND Hispanic or Latino.
 # This raises another problem. Asian Alone, Black or African American Alone and a few others do not have an exclusive non-Hispanic category.
-# There are ways to get a mutally exclusive comparison but it requires looking at other datasets (e.g., PUMS data) at much larger geographies (sub-county is the smallest).
+# There are ways to get a mutually exclusive comparison but it requires looking at other datasets (e.g., PUMS data) at much larger geographies (sub-county is the smallest).
 # We want to use census tracts so we can't really get away from this problem.
 
 # The reason I bring this up is so that we realize we have to be careful about which variables we use, what these variables mean, and what they can tell us.
@@ -94,35 +94,43 @@ View(acs5_vars)
 
 # Tell me what does the Label for B19013_001 say? Estimate!!Total:
 # Now, what does the Label for B19001_002 say? Estimate!!Total:!!Less than $10,000
-# If we go down the list we see incrimental increases in income.
+# If we go down the list we see incremental increases in income.
 
 # NOW: Tell me. Is table B19001 giving us a dollar amount or a count?
 # It's a count because this table is giving us the number of people in each income group. For example, B19001_002 is the number of people in the "Less than $10,000" income group.
 
 # How would this be useful? Well, we could calculate the percentage of people that are low-income if we know the median household income. It would look something like this:
 
+# For example, if the area median household income is $100,000
 ami <- 100000
+
+# Low income equals 80% of the AMI
 li <- ami * 0.8 # 80000
+# To get the total number of people that are low-income, and subsequently the proportion of people that are low-income, we can get the count of people that fall below the AMI using Table B19001. This gives us the count of people that fall within various income buckets. And, if we know the AMI, we can just sum the budgets that are within close range of the known AMI. 
+
+# For example, if Low-income is at $80,000, then we can sum tables B19001_002 through B19001_012. 
 inc_groups <- c(
     "B19001_001", # Estimate!!Total:
-    "B19001_002", # Estimate!!Total:!!Less than $10,000
-    "B19001_003", # Estimate!!Total:!!$10,000 to $14,999
-    "B19001_004", # Estimate!!Total:!!$15,000 to $19,999
-    "B19001_005", # Estimate!!Total:!!$20,000 to $24,999
-    "B19001_006", # Estimate!!Total:!!$25,000 to $29,999
-    "B19001_007", # Estimate!!Total:!!$30,000 to $34,999
-    "B19001_008", # Estimate!!Total:!!$35,000 to $39,999
-    "B19001_009", # Estimate!!Total:!!$40,000 to $44,999
-    "B19001_010", # Estimate!!Total:!!$45,000 to $49,999
-    "B19001_011", # Estimate!!Total:!!$50,000 to $59,999
-    "B19001_012", # Estimate!!Total:!!$60,000 to $74,999
-    "B19001_013", # Estimate!!Total:!!$75,000 to $99,999
+    "B19001_002", # Estimate!!Total:!!Less than $10,000 * within the $80k threshold
+    "B19001_003", # Estimate!!Total:!!$10,000 to $14,999 * within the $80k threshold
+    "B19001_004", # Estimate!!Total:!!$15,000 to $19,999 * within the $80k threshold
+    "B19001_005", # Estimate!!Total:!!$20,000 to $24,999 * within the $80k threshold
+    "B19001_006", # Estimate!!Total:!!$25,000 to $29,999 * within the $80k threshold
+    "B19001_007", # Estimate!!Total:!!$30,000 to $34,999 * within the $80k threshold
+    "B19001_008", # Estimate!!Total:!!$35,000 to $39,999 * within the $80k threshold
+    "B19001_009", # Estimate!!Total:!!$40,000 to $44,999 * within the $80k threshold
+    "B19001_010", # Estimate!!Total:!!$45,000 to $49,999 * within the $80k threshold
+    "B19001_011", # Estimate!!Total:!!$50,000 to $59,999 * within the $80k threshold
+    "B19001_012", # Estimate!!Total:!!$60,000 to $74,999 * within the $80k threshold
+    "B19001_013", # Estimate!!Total:!!$75,000 to $99,999 
     "B19001_014", # Estimate!!Total:!!$100,000 to $124,999
     "B19001_015", # Estimate!!Total:!!$125,000 to $149,999
     "B19001_016", # Estimate!!Total:!!$150,000 to $199,999
     "B19001_017" # Estimate!!Total:!!$200,000 or more
 )
 
+# Pull in the income census data for Marion County Indiana. 
+# Note that we're looking at census tracts. 
 acs_inc <- get_acs(
   geography = "tract",
   variables = inc_groups, # another way is to use 'table = "B19001"'
@@ -133,57 +141,142 @@ acs_inc <- get_acs(
 
 acs_inc
 
+# Let's also say that we want the actual median income for Marion, IN because the $80,000 AMI was an example. Let's also pull in median household income for Marion County. 
+
+co_med_inc <- 
+  get_acs(
+    geography = "county", # note we want the county as a whole for reference. 
+    variables = c("median_income" = "B19019_001"), # we can pre-name the variable 
+    state = "IN", 
+    county = "Marion", 
+    year = 2022
+  )
+
+co_med_inc
+co_med_inc$estimate * .8 
+# Marion's median income is $59,504 and Low-income is $47,603
+# Which tables from our inc_groups object will we sum? Take a look and make it close. 
+
 # get the number of people below 80% ami
-li_count <- acs_inc %>%
-    group_by(GEOID) %>%
-    select(-moe) %>%
-    pivot_wider(
-        names_from = variable,
-        values_from = estimate
-    ) %>%
-    reframe(
-        li_count = sum(
-            B19001_002, # Estimate!!Total:!!Less than $10,000
-            B19001_003, # Estimate!!Total:!!$10,000 to $14,999
-            B19001_004, # Estimate!!Total:!!$15,000 to $19,999
-            B19001_005, # Estimate!!Total:!!$20,000 to $24,999
-            B19001_006, # Estimate!!Total:!!$25,000 to $29,999
-            B19001_007, # Estimate!!Total:!!$30,000 to $34,999
-            B19001_008, # Estimate!!Total:!!$35,000 to $39,999
-            B19001_009, # Estimate!!Total:!!$40,000 to $44,999
-            B19001_010, # Estimate!!Total:!!$45,000 to $49,999
-            B19001_011, # Estimate!!Total:!!$50,000 to $59,999
-            B19001_012 # Estimate!!Total:!!$60,000 to $74,999
-        ),
-        total_count = B19001_001
-    ) %>%
-    mutate(
-        p_li = li_count / total_count
-    )
+li_count <- 
+  acs_inc %>%
+  group_by(GEOID) %>% 
+  select(-moe) %>%
+  pivot_wider(
+    names_from = variable,
+    values_from = estimate
+  ) %>%
+  reframe(
+    li_count = 
+      sum(
+        B19001_002, # Estimate!!Total:!!Less than $10,000
+        B19001_003, # Estimate!!Total:!!$10,000 to $14,999
+        B19001_004, # Estimate!!Total:!!$15,000 to $19,999
+        B19001_005, # Estimate!!Total:!!$20,000 to $24,999
+        B19001_006, # Estimate!!Total:!!$25,000 to $29,999
+        B19001_007, # Estimate!!Total:!!$30,000 to $34,999
+        B19001_008, # Estimate!!Total:!!$35,000 to $39,999
+        B19001_009, # Estimate!!Total:!!$40,000 to $44,999
+        B19001_010 # Estimate!!Total:!!$45,000 to $49,999
+      ),
+    total_count = B19001_001
+  ) %>%
+  mutate(
+    p_li = li_count / total_count
+  )
 
 # NOTE: You ALWAYS ALWAYS ALWAYS want to use the total population of the universe of your table. In this case it's B19001_001.
 
-# Also Note that we could have included "B19001_013", # Estimate!!Total:!!$75,000 to $99,999 but $80k sits below the middle of this range. It's 5k from 75k and 10k from 100k. I leaned it towards the lower end of the range and ommitted this variable in the sum. One could find the proportional diffrence between 75 and 80 and 80 and 100, multiply that proportion by whatever value "B19001_013" is for the respective tract, and then sum the partial value of "B19001_013" to the sum of the other variables to get a roughly more accurate value.
-
-
-head(data.frame(li_count))
+head(li_count)
 glimpse(li_count)
 
 # Create a histogram of low-income counts across tracts
 ggplot(li_count, aes(x = p_li)) +
-    geom_histogram(binwidth = 0.05, fill = "steelblue", color = "black") +
-    labs(
-        title = "Distribution of Low-Income Population Proportion by Census Tract",
-        x = "Proportion of Low-Income Residents",
-        y = "Frequency"
-    ) +
-    theme_minimal()
+  geom_histogram(binwidth = 0.05, fill = "steelblue", color = "black") +
+  labs(
+    title = "Distribution of Low-Income Population Proportion by Census Tract",
+    x = "Proportion of Low-Income Residents",
+    y = "Frequency"
+  ) +
+  geom_vline(xintercept = median(na.omit(li_count$p_li)), color = "red") +
+  theme_minimal()
 
-# This graph us how heavily concentrated low-income residents are across tracts. The plot is left-skewed (the tail is on the left), meaning there are more tracts with low-income residents than tracts with high-income residents.
+# This graph tells us how heavily concentrated low-income residents are across tracts. The plot is left-skewed (the tail is on the left), meaning there are more tracts with low-income residents than tracts with high-income residents.
 
 # Let's quickly see what Alameda County, CA has to offer. Just go up to the top of the script and change the state and county variables. Make sure to change it back before running the rest of the script.
 
 # Alameda County, CA is right-skewed meaning there are more tracts with high-income residents than low-income residents.
+
+alameda_acs_inc <- 
+  get_acs(
+    geography = "tract",
+    variables = inc_groups, # another way is to use 'table = "B19001"'
+    state = "CA",
+    county = "Alameda", # county that holds Indianapolis, the state capitol of Indiana.
+    year = 2022
+  )
+
+alameda_acs_inc
+
+# Let's also say that we want the actual median income for Marion, IN because the $80,000 AMI was an example. Let's also pull in median household income for Marion County. 
+
+alameda_co_med_inc <- 
+  get_acs(
+    geography = "county", # note we want the county as a whole for reference. 
+    variables = c("median_income" = "B19019_001"), # we can pre-name the variable 
+    state = "CA", 
+    county = "Alameda", 
+    year = 2022
+  )
+
+alameda_co_med_inc
+alameda_co_med_inc$estimate * .8 
+
+# get the number of people below 80% ami
+alameda_li_count <- 
+  alameda_acs_inc %>%
+  group_by(GEOID) %>% 
+  select(-moe) %>%
+  pivot_wider(
+    names_from = variable,
+    values_from = estimate
+  ) %>%
+  reframe(
+    li_count = 
+      sum(
+        B19001_002, # Estimate!!Total:!!Less than $10,000
+        B19001_003, # Estimate!!Total:!!$10,000 to $14,999
+        B19001_004, # Estimate!!Total:!!$15,000 to $19,999
+        B19001_005, # Estimate!!Total:!!$20,000 to $24,999
+        B19001_006, # Estimate!!Total:!!$25,000 to $29,999
+        B19001_007, # Estimate!!Total:!!$30,000 to $34,999
+        B19001_008, # Estimate!!Total:!!$35,000 to $39,999
+        B19001_009, # Estimate!!Total:!!$40,000 to $44,999
+        B19001_010, # Estimate!!Total:!!$45,000 to $49,999
+        B19001_011,# Estimate!!Total:!!$50,000 to $59,999 
+        B19001_012, # Estimate!!Total:!!$60,000 to $74,999 
+        B19001_013 # Estimate!!Total:!!$75,000 to $99,999 
+      ),
+    total_count = B19001_001
+  ) %>%
+  mutate(
+    p_li = li_count / total_count
+  )
+
+head(alameda_li_count)
+glimpse(alameda_li_count)
+summary(alameda_li_count)
+
+# Create a histogram of low-income counts across tracts
+ggplot(alameda_li_count, aes(x = p_li)) +
+  geom_histogram(binwidth = 0.05, fill = "steelblue", color = "black") +
+  labs(
+    title = "Distribution of Low-Income Population Proportion by Census Tract",
+    x = "Proportion of Low-Income Residents",
+    y = "Frequency"
+  ) +
+  geom_vline(xintercept = median(na.omit(alameda_li_count$p_li)), color = "red") +
+  theme_minimal()
 
 ######
 # Ok, let's look at another complex variable: B25118
@@ -237,8 +330,7 @@ li_count <- acs_inc_reanters %>%
             B25118_018, # Estimate!!Total:!!Renter occupied:!!$15,000 to $19,999
             B25118_019, # Estimate!!Total:!!Renter occupied:!!$20,000 to $24,999
             B25118_020, # Estimate!!Total:!!Renter occupied:!!$25,000 to $34,999
-            B25118_021, # Estimate!!Total:!!Renter occupied:!!$35,000 to $49,999
-            B25118_022 # Estimate!!Total:!!Renter occupied:!!$50,000 to $74,999
+            B25118_021 # Estimate!!Total:!!Renter occupied:!!$35,000 to $49,999
         ),
         total_renters = B25118_014
     ) %>%
@@ -271,7 +363,7 @@ ggplot(li_count_adj, aes(x = p_li)) +
     ) +
     theme_minimal()
 
-# I'm often a little suspicious when I see things out of place. For example, I have a lot of zeros. Five in fact. Let's check to make sure that this is correct in our data.
+# I'm often a little suspicious when I see things out of place. For example, I have a lot of zeros. Seven in fact. Let's check to make sure that this is correct in our data.
 
 li_count_adj %>% filter(p_li == 0)
 
@@ -292,12 +384,12 @@ li_count_adj %>% filter(p_li == 0)
 # For this lesson, we will use tmap.
 # The first thing we need is spatial data. When we download census data using get_acs(), the option "geometry = TRUE" will give us a spatial object in an SF format (stands for Simple Feature). Other spatial formats include shape files, SPDF, SpatialPolygonsDataFrame, and SpatialPointsDataFrame. SF is a more recent format that is easier to work with than others so I recommend sticking with SF. Spatial analysis and GIS is a whole field of study in itself so we won't dive too deep into it today.
 
-# So we didn't use the "geometry = TRUE" feature above so our data is non-spatial (just a lonely dataframe). We could amend the code above or we could just download the spatial data aloen from the tigris package and join it to the census data. This is a common practice as dealing with spatial data, especially when you're trying to do calculations on it, can slow your computer down because spatial data adds a lot more complexity to your data frame.
+# So we didn't use the "geometry = TRUE" feature above so our data is non-spatial (just a lonely dataframe). We could amend the code above or we could just download the spatial data by itself from the tigris package and join it to the census data. This is a common practice as dealing with spatial data, especially when you're trying to do calculations on it, can slow your computer down because spatial data adds a lot more complexity to your data frame.
 # I recommend this route of calculating your data and then joining the spatial data on.
 
 # Let's download the spatial data.
 
-indiana_tracts <- tracts(state = "IN", county = "Marion") # I could download all the tracts in Indiana by omitting the county argument.
+indiana_tracts <- tracts(state = "IN", county = "Marion", year = 2022) # I could download all the tracts in Indiana by omitting the county argument. Also make sure that your year matches between the ACS data you pulled and the year of spatial data you want to pull. 
 
 # let's look at the data
 
@@ -339,16 +431,18 @@ class(li_count_adj)
 
 # Now let's join the data.
 
-li_sf <- li_count_adj %>%
-    left_join(indiana_tracts, by = c("GEOID" = "GEOID"))
+li_sf <- 
+  li_count_adj %>% # our data frame
+  left_join(indiana_tracts, by = c("GEOID" = "GEOID")) # left joining the spatial object
 
 glimpse(li_sf)
 class(li_sf)
 # Uh oh, we have a geometry column but it's not an sf object.
 # To make it an sf object, we can do one of two things.
 # we can switch around the order of the join:
-li_sf2 <- indiana_tracts %>%
-    left_join(li_count_adj, by = c("GEOID" = "GEOID"))
+li_sf2 <- 
+  indiana_tracts %>% # our spatial object
+  left_join(li_count_adj, by = c("GEOID" = "GEOID")) # left joining the data frame
 
 glimpse(li_sf2)
 class(li_sf2)
@@ -373,15 +467,15 @@ librarian::shelf(tmap)
 
 # tm_shape() defines the spatial object to be mapped
 tm_shape(li_sf3) +
-    # tm_polygons() adds the polygon layer with:
-    # col = "p_li" - colors polygons based on p_li column
-    # title - sets the legend title
-    # palette - uses the "Blues" color scheme from RColorBrewer
     tm_polygons(
         col = "p_li",
         title = "Proportion of Low-Income Residents",
         palette = "Blues"
     )
+# tm_polygons() adds the polygon layer with:
+# col = "p_li" - colors polygons based on p_li column
+# title - sets the legend title
+# palette - uses the "Blues" color scheme from RColorBrewer
 
 # This gives us a static choropleth map.
 # We can make it interactive by turning on activity using the tm_view() function.
@@ -419,9 +513,9 @@ tm_shape(li_sf3) +
     tm_fill(col = "p_li",
         title = "Proportion of Low-Income Residents",
         palette = "Reds",
-        # alpha = .5,
+        alpha = .5,
         style = "sd")
-# Note that this changed the legend breaks in the legend.
+# Note that this changed the breaks in the legend.
 # Review the tmap documentation for more information on the different styles and parameters. https://r-tmap.github.io/tmap/
 
 # =============================================================================
@@ -430,7 +524,7 @@ tm_shape(li_sf3) +
 
 # Let's pull in our eviction data from last week into this map. Let's say we want to look at one year of eviction data.
 librarian::shelf(qs)
-indiana_evictions <- qread("~/git/evictionresearch/SOC-N100-Housing-Precarity/data/evictions/d5_case_aggregated.qs")
+indiana_evictions <- qread("data/evictions/d5_case_aggregated.qs")
 
 # Which years seem to have complete data?
 indiana_evictions %>%
@@ -439,8 +533,15 @@ summarize(filings = sum(filings, na.rm = TRUE))
 # It looks like there were more evictions prior to the pandemic and 2021 and 2022 have less than 75k filings, which is about the average for the pre-pandemic numbers. Let's look at 2022.
 
 # Let's look at 2022 and join it to our spatial data.
-indiana_evictions_2022 <- indiana_evictions %>%
-    filter(year == 2022)
+indiana_evictions_2022 <- 
+  indiana_evictions %>%
+  filter(year == 2022) %>% 
+  group_by(tract_geoid) %>%
+  summarize( # each row is a month so we want to sum filings within the year. 
+    total_filings = sum(filings), 
+    renters = first(tr_totrent)
+    ) %>%
+  mutate(eviction_rate = total_filings/renters)
 
 glimpse(indiana_evictions_2022)
 # It doesn't have a geometry column so we need to add that.
@@ -454,10 +555,21 @@ class(ie)
 
 # Now, let's map the eviction data.
 tm_shape(ie) +
-    tm_fill(col = "filings",
-        title = "Number of Evictions",
+    tm_fill(col = "total_filings",
+        title = "Number of Evictions in 2022",
         palette = "Reds",
         alpha = .5, 
         style = "jenks")
 
-# We can calculate the rate, which is more informative. Say we wanted to calculate the Black rate of eviction, what table would we need to join?
+# We can calculate the rate, which is more informative using the eviction_rate field we created above. 
+
+tm_shape(ie) +
+  tm_fill(col = "eviction_rate",
+          title = "Eviction Rate in 2022",
+          palette = "Reds",
+          alpha = .5, 
+          style = "jenks")
+
+# You could do the same with evictions by race. How would you do that? 
+glimpse(indiana_evictions)
+
