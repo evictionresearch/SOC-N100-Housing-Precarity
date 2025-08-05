@@ -194,5 +194,12 @@
     "title": "Housing Precarity and Displacement",
     "section": "Week 6",
     "text": "Week 6\nTuesday - Lab\nThursday - Lab\nFinal Assignment Due Friday August 15th"
+  },
+  {
+    "objectID": "resources.html#other-datasets-or-data-points",
+    "href": "resources.html#other-datasets-or-data-points",
+    "title": "Resources",
+    "section": "Other datasets or data points",
+    "text": "Other datasets or data points\n\nHUD Fair Market Rent (FMR)\nApartmentlist.com monthly rents\nConsumer Price Index (CPI) calculator\nTim’s neighborhood package. This helps create segregated census tracts for any area using tidycensus."
   }
 ]

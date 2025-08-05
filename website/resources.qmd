@@ -4,9 +4,16 @@ format: html
 ---
 
 ## Class Materials
-[R Coding Resources](learn_r.qmd)
 
-Tidycensus Book: [Analyzing U.S. Census Data: Methods, Maps, and Models in R](https://walker-data.com/census-r/index.html)
+* [R Coding Resources](learn_r.qmd)
+* Tidycensus Book: [Analyzing U.S. Census Data: Methods, Maps, and Models in R](https://walker-data.com/census-r/index.html)
+
+## Other datasets or data points
+
+* [HUD Fair Market Rent (FMR)](https://www.huduser.gov/portal/datasets/fmr/fmrs/FY2025_code/2025summary.odn)
+* [Apartmentlist.com monthly rents](https://www.apartmentlist.com/research/category/data-rent-estimates)
+* [Consumer Price Index (CPI) calculator](https://www.bls.gov/data/inflation_calculator.htm)
+* [Tim's neighborhood package](https://github.com/evictionresearch/neighborhood). This helps create segregated census tracts for any area using tidycensus. 
 
 ## Additional Recommendations
 [Decolonizing Methodologies](https://gordonconwell.store/products/decolonizing-methodologies-research-and-indigenous-peoples-3rd-edition)
