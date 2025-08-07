@@ -1,5 +1,6 @@
 # Load required packages: tidyverse for data manipulation/visualization, tidycensus for accessing Census data
-librarian::shelf(tidyverse, tidycensus, evictionresearch / neighborhood)
+install.packages("librarian")
+librarian::shelf(tidyverse, tidycensus, evictionresearch/neighborhood)
 
 # Define ACS variable codes for gross rent as a percentage of household income
 # Each code corresponds to a specific rent burden category
@@ -13,7 +14,7 @@ rb_vars <- c(
   "B25070_007", # 30.0 to 34.9 percent
   "B25070_008", # 35.0 to 39.9 percent
   "B25070_009", # 40.0 to 49.9 percent
-  "B25070_010", # 50.0 percent or more
+  "B25070_010", # 50.0 percent or more # extreme rent burden
   "B25070_011"  # Not computed
 )
 rb_vars
@@ -28,6 +29,8 @@ acs_df <-
     year = 2023
   )
 
+glimpse(acs_df)
+head(data.frame(acs_df), 30)
 # Process the ACS data to calculate rent burden statistics by tract
 sf_rb <-
   acs_df %>%
@@ -43,7 +46,21 @@ sf_rb <-
     rb_count = sum(B25070_007, B25070_008, B25070_009, B25070_010),
     # rb_count: households spending 30% or more of income on rent
     p_rb = rb_count / B25070_001     # Proportion rent-burdened
+  ) %>%
+  mutate(
+    # p_rb = case_when(
+    #   is.na(p_rb) ~ 0,
+    #   p_rb > 1 ~ 1,
+    #   p_rb < .3 ~ "low",
+    #   TRUE ~ p_rb
+    #   ) # good for multiple adjustments in a variable
+    p_rb = if_else(is.na(p_rb), 0, p_rb) # good for singular adjustments in a variable
   )
+
+glimpse(sf_rb)
+summary(sf_rb)
+
+sf_rb %>% filter(is.na(p_rb))
 
 # Plot the distribution of rent burdened proportion across tracts
 ggplot(sf_rb, aes(x = p_rb)) +
@@ -58,16 +75,26 @@ ggplot(sf_rb, aes(x = p_rb)) +
 
 # Tim's package "neighborhood" that creates racial segregation values: https://github.com/evictionresearch/neighborhood?tab=readme-ov-file
 
-
 seg <- ntdf(state = "CA", county = "San Francisco", year = 2023)
 glimpse(seg)
 
 seg_adj <-
   seg %>%
-  mutate(TRACTCODE = str_sub(GEOID, 3, 11))
+  mutate(
+    nt_conc =
+      case_when(
+        nt_conc == "Other-White" ~ "Mostly White",
+        nt_conc == "4 Group Mixed" ~ "Diverse",
+        TRUE ~ nt_conc
+      )
+  ) %>%
+  mutate(
+    TRACTCODE = str_sub(GEOID, 3, 11)
+  )
+
 glimpse(seg_adj)
 
-write_csv(seg_adj, "~/SOC-N100-Lab-Code/seg.csv")
+write_csv(seg_adj, "~/SOC-N100-Lab-Code/seg_adj.csv")
 write_csv(sf_rb, "~/SOC-N100-Lab-Code/sf_rb.csv")
 
 # Now we're going to map this using a great free websource called datawrapper.de
